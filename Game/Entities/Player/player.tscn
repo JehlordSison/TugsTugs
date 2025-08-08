@@ -1,18 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://dntuv8soi5afl"]
 
-[ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/player.gd" id="1_1du5w"]
+[ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/sprite.png" id="1_cyq5s"]
 [ext_resource type="Script" uid="uid://cxmfqkuqpxv7r" path="res://Modules/CharacterPhysics/character_physics.gd" id="2_ipj5g"]
-[ext_resource type="Script" uid="uid://dtf8j3xv1doul" path="res://Game/Entities/Player/controls.gd" id="4_ulv0d"]
+[ext_resource type="Script" uid="uid://dtf8j3xv1doul" path="res://Game/Scripts/Entities/Player/controls.gd" id="4_ulv0d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dumhb"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
+radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_1du5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dumhb")
+shape = SubResource("CircleShape2D_ulv0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -21,14 +22,16 @@ texture = ExtResource("1_cyq5s")
 [node name="CharacterPhysics" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_ipj5g")
 actor = NodePath("..")
-movement_speed = 60.0
+movement_speed = 90.0
 movement_max_speed = 125.0
-jump_force = 200
+jump_force = 250
 gravity_force = -750
 dash_force = 250
+hop_force = 125
 movement_deceleration = 0.09
 move_snap = 16
 metadata/_custom_type_script = "uid://cxmfqkuqpxv7r"
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("4_ulv0d")
+hold_timer = 0.3

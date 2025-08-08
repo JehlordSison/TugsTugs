@@ -11,6 +11,7 @@ class_name CharacterPhysics
 @export var jump_force: int = 300
 @export var gravity_force: int = -500
 @export var dash_force: int = 300
+@export var hop_force: int = 150
 
 @export_group("Passive")
 @export var movement_deceleration: float = 1 ## Fixed
@@ -32,23 +33,24 @@ func _physics_process(delta):
 func Movement_Snap(input: float) -> void:
 	if(input and can_move == true):
 		if(input > 0 and actor.velocity.x < movement_max_speed) || (input < 0 and actor.velocity.x > -movement_max_speed):
-			actor.velocity.x = 0
-			actor.velocity.x += input * movement_speed 
-			actor.velocity.y -= 125
+			if(actor.is_on_floor()):
+				actor.velocity.x = 0
+				actor.velocity.x += input * movement_speed 
+				actor.velocity.y -= hop_force
 		
 func Decelerate() -> void:
 	if(actor.is_on_floor()):
 		actor.velocity.x = 0
 
 func Snap(delta: float) -> void:
-	if(actor.is_on_floor()):
-		var target_pos = round(actor.global_position.x/ move_snap) * move_snap		
-		if(abs(actor.global_position.x - target_pos) > .5):
-			actor.global_position.x = lerp(actor.global_position.x, target_pos, snap_rate * delta)
+	var target_pos = round(actor.global_position.x/ move_snap) * move_snap		
+	if(abs(actor.global_position.x - target_pos) > .5):
+		actor.global_position.x = lerp(actor.global_position.x, target_pos, snap_rate * delta)
 			
 func Jump() -> void:
 	if(can_jump):
-		actor.velocity.y -= jump_force
+		if(actor.is_on_floor()):
+			actor.velocity.y -= jump_force
 
 func Gravity(delta: float) -> void:
 	if!(actor.is_on_floor()):

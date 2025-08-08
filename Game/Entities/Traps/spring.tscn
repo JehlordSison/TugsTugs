@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vdxfm7ggvsrh"]
+
+[ext_resource type="Script" uid="uid://buegkbq1e1ema" path="res://Game/Scripts/Entities/Traps/spring.gd" id="1_88man"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dumhb"]
+size = Vector2(16, 16)
+
+[node name="Spring" type="Node2D"]
+script = ExtResource("1_88man")
+
+[node name="Spring" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spring"]
+shape = SubResource("RectangleShape2D_dumhb")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -16)
+
+[connection signal="body_entered" from="Spring" to="." method="_on_spring_body_entered"]

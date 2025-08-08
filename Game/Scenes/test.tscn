@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://ccm7q712x1q8f"]
+[gd_scene load_steps=6 format=4 uid="uid://ccm7q712x1q8f"]
 
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="1_bhl1n"]
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="2_dumhb"]
+[ext_resource type="PackedScene" uid="uid://vdxfm7ggvsrh" path="res://Game/Entities/Traps/spring.tscn" id="3_erpku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("2_dumhb")
@@ -94,16 +95,19 @@ sources/2 = SubResource("TileSetAtlasSource_erpku")
 [node name="Test" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(224, 128)
+position = Vector2(360, 88)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAANAAcAAgACAAIAAAANAAYAAgACAAAAAAAAAAYAAgAAAAAAAAAAAAcAAgAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAEAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAANAAcAAgACAAIAAAANAAYAAgACAAAAAAAAAAYAAgAAAAAAAAAAAAcAAgAAAAIAAAAIAAUAAgACAAAAAAA=")
 tile_set = SubResource("TileSet_m417t")
 
 [node name="Player" parent="." instance=ExtResource("1_bhl1n")]
-position = Vector2(16, 112)
+position = Vector2(272, 136)
 
 [node name="GameSpeed" type="Timer" parent="." groups=["game_speed"]]
 wait_time = 0.5
 autostart = true
+
+[node name="Spring" parent="." instance=ExtResource("3_erpku")]
+position = Vector2(240, 184)
