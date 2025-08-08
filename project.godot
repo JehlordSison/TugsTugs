@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="TugsTugs"
+run/main_scene="uid://ccm7q712x1q8f"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=455
+window/size/viewport_height=256
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [rendering]
 

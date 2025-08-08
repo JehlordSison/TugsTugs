@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://ccm7q712x1q8f"]
+[gd_scene load_steps=3 format=3 uid="uid://ccm7q712x1q8f"]
+
+[ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/player.tscn" id="1_bhl1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdwvw"]
+size = Vector2(218, 20)
 
 [node name="Test" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_gdwvw")
+
+[node name="Player" parent="." instance=ExtResource("1_bhl1n")]
+position = Vector2(0, -24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -48)
