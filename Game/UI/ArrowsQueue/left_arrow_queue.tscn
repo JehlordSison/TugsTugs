@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://2jjkpn7nkt2s"]
+
+[ext_resource type="Texture2D" uid="uid://dnkimcvxwqooj" path="res://Game/Assets/UI/ArrowsQueue/2.png" id="1_8th2f"]
+
+[node name="Right" type="TextureRect"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8th2f")

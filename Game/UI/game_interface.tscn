@@ -1,39 +1,56 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7j1a13blte40"]
+[gd_scene load_steps=21 format=3 uid="uid://b7j1a13blte40"]
 
 [ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/UI/game_interface.gd" id="1_vsudi"]
 [ext_resource type="Texture2D" uid="uid://d0mkuuolpsten" path="res://Game/Assets/UI/arrows.png" id="2_mj7jt"]
+[ext_resource type="Texture2D" uid="uid://b50uufwmd6e43" path="res://Game/Assets/UI/beat.png" id="3_4romp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj7jt"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4romp"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avyol"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_un82k"]
 atlas = ExtResource("2_mj7jt")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58e5n"]
+atlas = ExtResource("3_4romp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epo43"]
+atlas = ExtResource("3_4romp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbjh8"]
+atlas = ExtResource("3_4romp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak577"]
+atlas = ExtResource("3_4romp")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmm6m"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4yraw"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhc20"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdp04"]
 atlas = ExtResource("2_mj7jt")
-region = Rect2(96, 32, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyka4"]
 atlas = ExtResource("2_mj7jt")
@@ -72,7 +89,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_58e5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epo43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbjh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak577")
 }],
 "loop": false,
 "name": &"none",
@@ -113,7 +139,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="GameInterface" type="CanvasLayer"]
+[node name="GameInterface" type="CanvasLayer" groups=["game_interface"]]
 script = ExtResource("1_vsudi")
 
 [node name="Panel" type="Panel" parent="."]
@@ -131,5 +157,13 @@ position = Vector2(224, 24)
 sprite_frames = SubResource("SpriteFrames_mmm6m")
 animation = &"none"
 autoplay = "none"
+frame = 3
+frame_progress = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+offset_left = 248.0
+offset_top = 8.0
+offset_right = 288.0
+offset_bottom = 40.0
 
 [node name="Node" type="Node" parent="."]

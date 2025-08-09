@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnb3ds8ordxk4"]
+
+[ext_resource type="Script" uid="uid://31atjdimplhe" path="res://Game/Scripts/Mechanics/game_speed.gd" id="1_u263p"]
+
+[node name="GameSpeed" type="Timer" groups=["game_speed"]]
+wait_time = 0.5
+autostart = true
+script = ExtResource("1_u263p")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

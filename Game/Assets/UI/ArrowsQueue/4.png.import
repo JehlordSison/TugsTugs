@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by2fuxccnlblx"
-path="res://.godot/imported/sprite.png-d98d0d684610b14713fffd3aed290206.ctex"
+uid="uid://7uoj8v78ocsb"
+path="res://.godot/imported/4.png-07b9534d2eb288726be3325b7ce7111e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/sprite.png"
-dest_files=["res://.godot/imported/sprite.png-d98d0d684610b14713fffd3aed290206.ctex"]
+source_file="res://Game/Assets/UI/ArrowsQueue/4.png"
+dest_files=["res://.godot/imported/4.png-07b9534d2eb288726be3325b7ce7111e.ctex"]
 
 [params]
 

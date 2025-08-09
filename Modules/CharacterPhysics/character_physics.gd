@@ -23,7 +23,6 @@ class_name CharacterPhysics
 @export var enable_gravity: bool = true
 
 func _physics_process(delta):
-	#Decelerate()
 	Snap(delta)
 
 func Movement_Snap(input: float) -> void:
@@ -33,16 +32,6 @@ func Movement_Snap(input: float) -> void:
 			actor.velocity.x += input * movement_speed 
 			if(actor.is_on_floor()):
 				actor.velocity.y -= hop_force
-
-#func Movement_Snap(input: float) -> void:
-	#if(input and can_move == true):
-		#if(actor.is_on_floor()):
-			#actor.velocity.y -= hop_force
-			#actor.global_position.x += input * move_snap
-
-func Decelerate() -> void:
-	if(actor.is_on_floor()):
-		actor.velocity.x = 0
 
 func Snap(delta: float) -> void:
 	if(actor.is_on_floor()):

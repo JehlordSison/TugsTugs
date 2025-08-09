@@ -25,9 +25,8 @@ func _unhandled_input(event):
 func key_press() -> void:
 	for action in ActionList.ACTIONS:
 		if(Input.is_action_just_pressed(action)):
-			if(max_input_reached() == false):
-				input_list_arr.append(action_direction(ActionList.ACTION_DIRECTIONS[action]))
-		
+			max_input_reached(action)
+			
 func key_hold(delta: float) -> void:
 	var pressing: bool = false
 	for action in ActionList.ACTIONS:
@@ -37,18 +36,18 @@ func key_hold(delta: float) -> void:
 			
 			if(hold_timer <= 0):
 				hold_timer = reset_hold_timer
-				if(max_input_reached() == false):
-					input_list_arr.append(action_direction(ActionList.ACTION_DIRECTIONS[action]))
+				max_input_reached(action)
 			break
 			
 	if(pressing == false):
 		hold_timer = reset_hold_timer
 
-func max_input_reached() -> bool:
-	if(input_list_arr.size() <= 5):
-		return true
-	return false
-		
+func max_input_reached(action: String) -> void:
+	if(input_list_arr.size() <= 4):
+		input_list_arr.append(action_direction(ActionList.ACTION_DIRECTIONS[action]))
+		game_interface.add_arrow_queue(action_direction(ActionList.ACTION_DIRECTIONS[action]))
+		print()
+
 func action_direction(dir: ActionList.Direction) -> String:
 	return ActionList.Direction.keys()[dir]
 
@@ -58,10 +57,11 @@ func get_game_speed() -> void:
 
 func _on_game_speed_timer_timeout():
 	if(input_list_arr.size() > 0):
-		move_to(input_list_arr.get(0))
-		
-		game_interface.play_direction_key(input_list_arr.get(0))
-		input_list_arr.remove_at(0)
+		if(character_physics.actor.is_on_floor()):
+			move_to(input_list_arr.get(0))
+			game_interface.play_direction_key(input_list_arr.get(0))
+			game_interface.delete_arrow_queue(0)
+			input_list_arr.remove_at(0)
 
 func move_to(action: String) -> void:
 	match action:
