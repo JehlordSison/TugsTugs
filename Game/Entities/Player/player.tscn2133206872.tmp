@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dntuv8soi5afl"]
+[gd_scene load_steps=6 format=3 uid="uid://dntuv8soi5afl"]
 
 [ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/sprite.png" id="1_cyq5s"]
 [ext_resource type="Script" uid="uid://cxmfqkuqpxv7r" path="res://Modules/CharacterPhysics/character_physics.gd" id="2_ipj5g"]
 [ext_resource type="Script" uid="uid://dtf8j3xv1doul" path="res://Game/Scripts/Entities/Player/controls.gd" id="4_ulv0d"]
-[ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="5_5028t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
-radius = 14.0357
+radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -23,13 +22,9 @@ texture = ExtResource("1_cyq5s")
 [node name="CharacterPhysics" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_ipj5g")
 actor = NodePath("..")
-movement_speed = 80.0
 jump_force = 250
 gravity_force = -750
 metadata/_custom_type_script = "uid://cxmfqkuqpxv7r"
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("4_ulv0d")
-hold_timer = 0.3
-
-[node name="GameInterface" parent="." instance=ExtResource("5_5028t")]
