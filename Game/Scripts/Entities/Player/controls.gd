@@ -12,10 +12,10 @@ var reset_hold_timer: float = hold_timer
 func _ready():
 	get_game_speed()
 #
-func _process(delta):
-	key_hold(delta)
+#func _process(delta):
+	#key_hold(delta)
 			
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	key_press()
 	if(Input.is_action_just_pressed("jump")):
 		character_physics.Jump()
@@ -31,10 +31,10 @@ func key_hold(delta: float) -> void:
 	var pressing: bool = false
 	for action in ActionList.ACTIONS:
 		if(Input.is_action_pressed(action)):
-			pressing = true
-			hold_timer -= delta
-			
-			if(hold_timer <= 0):
+			if(hold_timer >= 0):
+				pressing = true
+				hold_timer -= delta
+			else:
 				hold_timer = reset_hold_timer
 				max_input_reached(action)
 			break
@@ -46,7 +46,6 @@ func max_input_reached(action: String) -> void:
 	if(input_list_arr.size() <= 4):
 		input_list_arr.append(action_direction(ActionList.ACTION_DIRECTIONS[action]))
 		game_interface.add_arrow_queue(action_direction(ActionList.ACTION_DIRECTIONS[action]))
-		print()
 
 func action_direction(dir: ActionList.Direction) -> String:
 	return ActionList.Direction.keys()[dir]

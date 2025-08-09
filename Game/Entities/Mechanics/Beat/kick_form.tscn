@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxsi58o2yc1s8"]
+
+[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beat/beat_form_template.tscn" id="1_c11d2"]
+[ext_resource type="AudioStream" uid="uid://7l5p1423psvs" path="res://Game/Sounds/Drums/kick.mp3" id="2_xn4d6"]
+
+[node name="KickForm" instance=ExtResource("1_c11d2")]
+
+[node name="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("2_xn4d6")

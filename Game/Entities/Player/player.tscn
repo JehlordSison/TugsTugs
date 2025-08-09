@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
 radius = 14.0357
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_1du5w")
 
@@ -23,8 +23,9 @@ texture = ExtResource("1_cyq5s")
 [node name="CharacterPhysics" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_ipj5g")
 actor = NodePath("..")
-movement_speed = 80.0
-jump_force = 250
+movement_speed = 75.0
+movement_max_speed = 80.0
+jump_force = 225
 gravity_force = -750
 metadata/_custom_type_script = "uid://cxmfqkuqpxv7r"
 

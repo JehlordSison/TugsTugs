@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://vdxfm7ggvsrh"]
+[gd_scene load_steps=4 format=3 uid="uid://vdxfm7ggvsrh"]
 
 [ext_resource type="Script" uid="uid://buegkbq1e1ema" path="res://Game/Scripts/Entities/Traps/spring.gd" id="1_88man"]
+[ext_resource type="AudioStream" uid="uid://bi6mfiyo6qljh" path="res://Game/Sounds/Drums/snare.mp3" id="2_ndjuo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88man"]
 radius = 8.0
@@ -17,5 +18,8 @@ shape = SubResource("CircleShape2D_88man")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -16)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ndjuo")
 
 [connection signal="body_entered" from="Spring" to="." method="_on_spring_body_entered"]

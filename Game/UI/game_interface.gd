@@ -2,18 +2,23 @@ extends CanvasLayer
 
 @onready var arrow_animation = $Panel/ArrowAnimation
 @onready var h_box_container = $Panel/HBoxContainer
+@onready var animation_player = $Panel/AnimationPlayer
 
 func play_direction_key(dir: String) -> void:
 	match dir: 
 		"Right":
 			arrow_animation.play("right")
+			animation_player.play("slide")
 		"Left":
 			arrow_animation.play("left")
+			animation_player.play("slide")
 		"Up":
 			arrow_animation.play("up")
+			animation_player.play("slide")
 		"":
 			arrow_animation.play("none")
-	
+			animation_player.play("RESET")
+			
 	await arrow_animation.animation_finished
 	arrow_animation.play("none")
 

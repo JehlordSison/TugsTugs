@@ -27,12 +27,10 @@ func _physics_process(delta):
 
 func Movement_Snap(input: float) -> void:
 	if(input and can_move == true):
-		if(input > 0 and actor.velocity.x < movement_max_speed) || (input < 0 and actor.velocity.x > -movement_max_speed):
-			actor.velocity.x = 0
-			actor.velocity.x += input * movement_speed 
-			if(actor.is_on_floor()):
-				actor.velocity.y -= hop_force
-
+		actor.velocity.x += input * movement_speed 
+		if(actor.is_on_floor()):
+			actor.velocity.y -= hop_force
+	
 func Snap(delta: float) -> void:
 	if(actor.is_on_floor()):
 		var target_pos = round(actor.global_position.x/ move_snap) * move_snap
@@ -49,6 +47,11 @@ func Gravity(delta: float) -> void:
 	if!(actor.is_on_floor()):
 		if(enable_gravity == true):
 			actor.velocity.y -= gravity_force * delta
+	#if(actor.velocity.y < 0):
+		#gravity_force = -1000
+	#else:
+		#gravity_force = -750
+		
 		
 func Knockup(direction: Vector2, amount: float) -> void:
 	actor.velocity.x += direction.x * amount

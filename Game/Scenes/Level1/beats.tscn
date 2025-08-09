@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdto0na7vfdx8"]
+
+[ext_resource type="PackedScene" uid="uid://cxsi58o2yc1s8" path="res://Game/Entities/Mechanics/Beat/kick_form.tscn" id="1_71fqs"]
+[ext_resource type="PackedScene" uid="uid://dpdfaiwaapdwj" path="res://Game/Entities/Mechanics/Beat/snare_form.tscn" id="2_j2bla"]
+[ext_resource type="PackedScene" uid="uid://beplfj1wg18x7" path="res://Game/Entities/Mechanics/Beat/hat_form.tscn" id="3_xqv7q"]
+
+[sub_resource type="Animation" id="Animation_5mlyw"]
+resource_name = "Music"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygi3o"]
+_data = {
+&"Music": SubResource("Animation_5mlyw")
+}
+
+[node name="Beats" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ygi3o")
+}
+
+[node name="Batch 1" type="Node2D" parent="."]
+
+[node name="KickForm2" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(48, 192)
+
+[node name="KickForm3" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(80, 192)
+
+[node name="KickForm4" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(112, 192)
+
+[node name="KickForm5" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(144, 192)
+
+[node name="KickForm6" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(176, 192)
+
+[node name="KickForm7" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(208, 192)
+
+[node name="KickForm8" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(240, 192)
+
+[node name="KickForm13" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(272, 192)
+
+[node name="KickForm9" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(304, 192)
+
+[node name="KickForm10" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(336, 192)
+
+[node name="KickForm11" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(368, 192)
+
+[node name="KickForm12" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(400, 192)
+
+[node name="KickForm14" parent="Batch 1" instance=ExtResource("1_71fqs")]
+position = Vector2(432, 192)
+
+[node name="SnareForm4" parent="Batch 1" instance=ExtResource("2_j2bla")]
+position = Vector2(208, 128)
+
+[node name="HatForm6" parent="Batch 1" instance=ExtResource("3_xqv7q")]
+position = Vector2(272, 168)
+
+[node name="HatForm7" parent="Batch 1" instance=ExtResource("3_xqv7q")]
+position = Vector2(304, 168)
+
+[node name="HatForm5" parent="Batch 1" instance=ExtResource("3_xqv7q")]
+position = Vector2(240, 168)
