@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://beplfj1wg18x7"]
 
-[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beat/beat_form_template.tscn" id="1_8rawr"]
+[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beats/beat_form_template.tscn" id="1_8rawr"]
 [ext_resource type="AudioStream" uid="uid://dlim6icy37p4v" path="res://Game/Sounds/Drums/hats.mp3" id="2_awbyb"]
 
 [node name="HatForm" instance=ExtResource("1_8rawr")]

@@ -1,0 +1,238 @@
+[gd_scene load_steps=11 format=4 uid="uid://xafr8cpvi5h8"]
+
+[ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_e3ynk"]
+[ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="3_tabp1"]
+[ext_resource type="Script" uid="uid://cd587n78afgkx" path="res://Game/Scripts/Scenes/Beats/beats.gd" id="4_q44qo"]
+[ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="4_ydnfg"]
+[ext_resource type="PackedScene" uid="uid://cxsi58o2yc1s8" path="res://Game/Entities/Mechanics/Beats/kick_form.tscn" id="5_ydnfg"]
+[ext_resource type="PackedScene" uid="uid://beplfj1wg18x7" path="res://Game/Entities/Mechanics/Beats/hat_form.tscn" id="6_q44qo"]
+[ext_resource type="PackedScene" uid="uid://dpdfaiwaapdwj" path="res://Game/Entities/Mechanics/Beats/snare_form.tscn" id="7_pei0r"]
+[ext_resource type="PackedScene" uid="uid://c7knpchrgxg2t" path="res://Game/Entities/Mechanics/Beats/riser_form.tscn" id="8_q44qo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idcyo"]
+texture = ExtResource("1_e3ynk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16, -16, -16)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_5mlyw"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/2 = SubResource("TileSetAtlasSource_idcyo")
+
+[node name="BudotStage" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAAAAAYAAgABAAAAAAAAAAcAAgABAAIAAAAMAAYAAgABAAAAAAANAAcAAgABAAIAAAANAAYAAgABAAAAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAD//wcAAgABAAIAAAD+/wcAAgABAAIAAAD+/wYAAgAAAAEAAAD+/wUAAgAAAAEAAAD+/wQAAgAAAAEAAAD+/wMAAgAAAAEAAAD+/wIAAgAAAAEAAAD+/wEAAgAAAAEAAAD+/wAAAgAAAAEAAAD+//7/AgAAAAAAAAD+////AgAAAAEAAAD/////AgACAAEAAAD///7/AgACAAAAAAD//wAAAgACAAEAAAD//wEAAgACAAEAAAD//wIAAgACAAEAAAD//wMAAgACAAEAAAD//wQAAgACAAEAAAD//wUAAgABAAEAAAD//wYAAgABAAEAAAAPAAcAAgACAAIAAAAPAAYAAgACAAEAAAAPAAUAAgACAAEAAAAPAAQAAgACAAEAAAAPAAMAAgACAAEAAAAPAAIAAgACAAEAAAAPAAEAAgACAAEAAAAPAAAAAgACAAEAAAAPAP//AgACAAEAAAAPAP7/AgACAAAAAAAOAP7/AgAAAAAAAAAOAP//AgAAAAEAAAAOAAAAAgAAAAEAAAAOAAEAAgAAAAEAAAAOAAIAAgAAAAEAAAAOAAMAAgAAAAEAAAAOAAQAAgAAAAEAAAAOAAUAAgAAAAEAAAA=")
+tile_set = SubResource("TileSet_5mlyw")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_tabp1")]
+position = Vector2(16, 160)
+
+[node name="GameSpeed" parent="." instance=ExtResource("4_ydnfg")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(224, 128)
+
+[node name="Beats" type="Node2D" parent="."]
+script = ExtResource("4_q44qo")
+
+[node name="Batch1" type="Node2D" parent="Beats"]
+
+[node name="KickForm1" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(48, 192)
+
+[node name="KickForm2" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(80, 192)
+
+[node name="KickForm3" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(112, 192)
+
+[node name="KickForm4" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(144, 192)
+
+[node name="KickForm5" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 192)
+
+[node name="KickForm6" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 192)
+
+[node name="HatForm8" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
+position = Vector2(240, 168)
+play_marker = false
+
+[node name="KickForm15" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 192)
+
+[node name="HatForm6" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
+position = Vector2(272, 168)
+play_marker = false
+
+[node name="KickForm13" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 192)
+
+[node name="HatForm7" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
+position = Vector2(304, 168)
+play_marker = false
+
+[node name="KickForm9" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 192)
+
+[node name="KickForm10" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(336, 192)
+
+[node name="KickForm11" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(368, 192)
+
+[node name="KickForm12" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(400, 192)
+
+[node name="KickForm14" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
+position = Vector2(432, 192)
+end = true
+
+[node name="Batch2" type="Node2D" parent="Beats"]
+position = Vector2(608, 80)
+
+[node name="KickForm3" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 192)
+
+[node name="KickForm4" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 192)
+
+[node name="KickForm5" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 192)
+
+[node name="KickForm6" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 192)
+
+[node name="HatForm8" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(304, 168)
+play_marker = false
+
+[node name="KickForm15" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 192)
+
+[node name="HatForm6" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(336, 168)
+play_marker = false
+
+[node name="HatForm9" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(112, 168)
+play_marker = false
+
+[node name="KickForm13" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(336, 192)
+
+[node name="HatForm7" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(368, 168)
+play_marker = false
+
+[node name="KickForm9" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(368, 192)
+
+[node name="KickForm11" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(112, 192)
+
+[node name="HatForm10" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(80, 168)
+play_marker = false
+
+[node name="KickForm12" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(80, 192)
+
+[node name="HatForm11" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
+position = Vector2(48, 168)
+play_marker = false
+
+[node name="KickForm16" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(144, 192)
+
+[node name="KickForm10" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
+position = Vector2(400, 192)
+start = true
+
+[node name="SnareForm4" parent="Beats/Batch2" instance=ExtResource("7_pei0r")]
+position = Vector2(464, 272)
+
+[node name="RiserForm" parent="Beats/Batch2" instance=ExtResource("8_q44qo")]
+position = Vector2(48, 192)

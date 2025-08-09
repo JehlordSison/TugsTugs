@@ -18,6 +18,7 @@ shape = SubResource("CircleShape2D_ulv0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -2)
 texture = ExtResource("1_cyq5s")
 
 [node name="CharacterPhysics" type="Node" parent="." node_paths=PackedStringArray("actor")]

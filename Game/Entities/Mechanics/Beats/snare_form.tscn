@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpdfaiwaapdwj"]
 
-[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beat/beat_form_template.tscn" id="1_henl4"]
+[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beats/beat_form_template.tscn" id="1_henl4"]
 [ext_resource type="AudioStream" uid="uid://bi6mfiyo6qljh" path="res://Game/Sounds/Drums/snare.mp3" id="2_lhbex"]
 
 [node name="SnareForm" instance=ExtResource("1_henl4")]
