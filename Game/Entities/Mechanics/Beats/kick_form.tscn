@@ -4,15 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://7l5p1423psvs" path="res://Game/Sounds/Drums/kick.mp3" id="2_xn4d6"]
 
 [node name="KickForm" instance=ExtResource("1_c11d2")]
+modulate = Color(0, 1, 1, 1)
 
 [node name="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("2_xn4d6")
 
 [node name="Marker" parent="." index="2"]
-metadata/_edit_lock_ = true
-
-[node name="Detect_player" parent="." index="3"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="Detect_player" index="0"]
 metadata/_edit_lock_ = true

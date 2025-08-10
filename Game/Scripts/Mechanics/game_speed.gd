@@ -5,4 +5,5 @@ func get_game_interface() -> CanvasLayer:
 	return game_interface
 	
 func _on_timeout():
+	$Metronome.play()
 	get_game_interface().play_direction_key("")

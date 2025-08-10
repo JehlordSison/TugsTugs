@@ -4,9 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bw68m7h417hym" path="res://Game/Sounds/Drums/riser.mp3" id="2_spfmg"]
 
 [node name="RiserForm" instance=ExtResource("1_x7gr4")]
+modulate = Color(1, 0, 1, 1)
 
 [node name="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("2_spfmg")
-
-[node name="Marker" parent="." index="2"]
-modulate = Color(1, 0, 1, 1)

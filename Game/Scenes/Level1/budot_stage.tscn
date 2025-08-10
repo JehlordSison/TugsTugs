@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://xafr8cpvi5h8"]
+[gd_scene load_steps=12 format=4 uid="uid://xafr8cpvi5h8"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_e3ynk"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="3_tabp1"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="4_ydnfg"]
 [ext_resource type="PackedScene" uid="uid://cxsi58o2yc1s8" path="res://Game/Entities/Mechanics/Beats/kick_form.tscn" id="5_ydnfg"]
 [ext_resource type="PackedScene" uid="uid://beplfj1wg18x7" path="res://Game/Entities/Mechanics/Beats/hat_form.tscn" id="6_q44qo"]
-[ext_resource type="PackedScene" uid="uid://dpdfaiwaapdwj" path="res://Game/Entities/Mechanics/Beats/snare_form.tscn" id="7_pei0r"]
+[ext_resource type="PackedScene" uid="uid://gwji771jy7u0" path="res://Game/Entities/Mechanics/Beats/snare_form.tscn" id="7_pei0r"]
 [ext_resource type="PackedScene" uid="uid://c7knpchrgxg2t" path="res://Game/Entities/Mechanics/Beats/riser_form.tscn" id="8_q44qo"]
+[ext_resource type="AudioStream" uid="uid://3rt2hjih7akn" path="res://Game/Sounds/Drums/level1_loop.mp3" id="9_pei0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idcyo"]
 texture = ExtResource("1_e3ynk")
@@ -97,7 +98,7 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_idcyo")
 
-[node name="BudotStage" type="Node2D"]
+[node name="Level!" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -105,134 +106,227 @@ tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAA
 tile_set = SubResource("TileSet_5mlyw")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("3_tabp1")]
-position = Vector2(16, 160)
+[node name="Beats" type="Node2D" parent="."]
+script = ExtResource("4_q44qo")
+
+[node name="Sheet" type="Node2D" parent="Beats"]
+
+[node name="KickForm1" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 192)
+
+[node name="KickForm2" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 208)
+
+[node name="KickForm3" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 224)
+
+[node name="KickForm4" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 240)
+
+[node name="KickForm7" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 256)
+
+[node name="KickForm10" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 272)
+
+[node name="KickForm8" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 304)
+
+[node name="HatForm8" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(176, 256)
+play_marker = false
+
+[node name="KickForm11" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(144, 336)
+
+[node name="HatForm10" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(144, 288)
+play_marker = false
+
+[node name="KickForm12" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 372)
+
+[node name="KickForm13" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 388)
+
+[node name="KickForm14" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 404)
+
+[node name="KickForm15" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 420)
+
+[node name="KickForm16" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 432)
+
+[node name="KickForm20" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 564)
+
+[node name="KickForm21" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 580)
+
+[node name="KickForm22" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 596)
+
+[node name="KickForm23" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 608)
+
+[node name="KickForm17" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 452)
+
+[node name="HatForm11" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(176, 332)
+play_marker = false
+
+[node name="KickForm9" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 484)
+
+[node name="HatForm9" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(240, 436)
+play_marker = false
+
+[node name="KickForm18" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 516)
+
+[node name="HatForm12" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(208, 468)
+play_marker = false
+
+[node name="KickForm19" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 548)
+
+[node name="HatForm13" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(176, 512)
+play_marker = false
+
+[node name="KickForm24" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 628)
+
+[node name="KickForm25" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 660)
+
+[node name="HatForm14" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(240, 612)
+play_marker = false
+
+[node name="KickForm26" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 692)
+
+[node name="HatForm15" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(208, 644)
+play_marker = false
+
+[node name="KickForm27" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 724)
+
+[node name="KickForm28" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 740)
+
+[node name="KickForm29" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(336, 852)
+
+[node name="HatForm16" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(176, 688)
+play_marker = false
+
+[node name="KickForm30" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(240, 772)
+
+[node name="HatForm17" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(240, 728)
+play_marker = false
+
+[node name="KickForm31" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 804)
+
+[node name="HatForm18" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(272, 760)
+play_marker = false
+
+[node name="KickForm32" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 836)
+
+[node name="HatForm19" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(304, 792)
+play_marker = false
+
+[node name="KickForm36" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(368, 884)
+
+[node name="HatForm23" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(368, 836)
+play_marker = false
+
+[node name="KickForm37" parent="Beats/Sheet" instance=ExtResource("5_ydnfg")]
+position = Vector2(336, 912)
+
+[node name="HatForm24" parent="Beats/Sheet" instance=ExtResource("6_q44qo")]
+position = Vector2(336, 872)
+play_marker = false
+
+[node name="RiserForm" parent="Beats/Sheet" instance=ExtResource("8_q44qo")]
+position = Vector2(304, 928)
+
+[node name="Sheet2" type="Node2D" parent="Beats"]
+visible = false
+
+[node name="KickForm29" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(80, 736)
+
+[node name="KickForm30" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 752)
+
+[node name="HatForm17" parent="Beats/Sheet2" instance=ExtResource("6_q44qo")]
+position = Vector2(144, 768)
+play_marker = false
+
+[node name="SnareForm2" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(112, 752)
+
+[node name="SnareForm8" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(176, 800)
+
+[node name="KickForm31" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(208, 816)
+
+[node name="KickForm32" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(304, 832)
+
+[node name="HatForm18" parent="Beats/Sheet2" instance=ExtResource("6_q44qo")]
+position = Vector2(272, 848)
+play_marker = false
+
+[node name="SnareForm3" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(240, 832)
+
+[node name="SnareForm9" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(304, 880)
+
+[node name="KickForm33" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(272, 900)
+
+[node name="KickForm34" parent="Beats/Sheet2" instance=ExtResource("5_ydnfg")]
+position = Vector2(176, 916)
+
+[node name="HatForm19" parent="Beats/Sheet2" instance=ExtResource("6_q44qo")]
+position = Vector2(208, 932)
+play_marker = false
+
+[node name="SnareForm4" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(240, 916)
+
+[node name="SnareForm10" parent="Beats/Sheet2" instance=ExtResource("7_pei0r")]
+position = Vector2(176, 964)
 
 [node name="GameSpeed" parent="." instance=ExtResource("4_ydnfg")]
+wait_time = 0.42
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
-[node name="Beats" type="Node2D" parent="."]
-script = ExtResource("4_q44qo")
+[node name="Player" parent="." instance=ExtResource("3_tabp1")]
+position = Vector2(208, 168)
 
-[node name="Batch1" type="Node2D" parent="Beats"]
-
-[node name="KickForm1" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(48, 192)
-
-[node name="KickForm2" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(80, 192)
-
-[node name="KickForm3" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(112, 192)
-
-[node name="KickForm4" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(144, 192)
-
-[node name="KickForm5" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(176, 192)
-
-[node name="KickForm6" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(208, 192)
-
-[node name="HatForm8" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
-position = Vector2(240, 168)
-play_marker = false
-
-[node name="KickForm15" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(240, 192)
-
-[node name="HatForm6" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
-position = Vector2(272, 168)
-play_marker = false
-
-[node name="KickForm13" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(272, 192)
-
-[node name="HatForm7" parent="Beats/Batch1" instance=ExtResource("6_q44qo")]
-position = Vector2(304, 168)
-play_marker = false
-
-[node name="KickForm9" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(304, 192)
-
-[node name="KickForm10" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(336, 192)
-
-[node name="KickForm11" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(368, 192)
-
-[node name="KickForm12" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(400, 192)
-
-[node name="KickForm14" parent="Beats/Batch1" instance=ExtResource("5_ydnfg")]
-position = Vector2(432, 192)
-end = true
-
-[node name="Batch2" type="Node2D" parent="Beats"]
-position = Vector2(608, 80)
-
-[node name="KickForm3" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(176, 192)
-
-[node name="KickForm4" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(208, 192)
-
-[node name="KickForm5" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(240, 192)
-
-[node name="KickForm6" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(272, 192)
-
-[node name="HatForm8" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(304, 168)
-play_marker = false
-
-[node name="KickForm15" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(304, 192)
-
-[node name="HatForm6" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(336, 168)
-play_marker = false
-
-[node name="HatForm9" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(112, 168)
-play_marker = false
-
-[node name="KickForm13" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(336, 192)
-
-[node name="HatForm7" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(368, 168)
-play_marker = false
-
-[node name="KickForm9" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(368, 192)
-
-[node name="KickForm11" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(112, 192)
-
-[node name="HatForm10" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(80, 168)
-play_marker = false
-
-[node name="KickForm12" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(80, 192)
-
-[node name="HatForm11" parent="Beats/Batch2" instance=ExtResource("6_q44qo")]
-position = Vector2(48, 168)
-play_marker = false
-
-[node name="KickForm16" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(144, 192)
-
-[node name="KickForm10" parent="Beats/Batch2" instance=ExtResource("5_ydnfg")]
-position = Vector2(400, 192)
-start = true
-
-[node name="SnareForm4" parent="Beats/Batch2" instance=ExtResource("7_pei0r")]
-position = Vector2(464, 272)
-
-[node name="RiserForm" parent="Beats/Batch2" instance=ExtResource("8_q44qo")]
-position = Vector2(48, 192)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_pei0r")
+volume_db = 17.442
+autoplay = true

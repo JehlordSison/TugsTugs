@@ -6,10 +6,10 @@ class_name CharacterPhysics
 
 @export_category("Physics Adjustments")
 @export_group("Active")
-@export var movement_speed: float = 0
-@export var movement_max_speed: float = 100
-@export var jump_force: int = 300
-@export var gravity_force: int = -500
+@export var movement_speed: float = 75
+@export var movement_max_speed: float = 80
+@export var jump_force: int = 225
+@export var gravity_force: int = -750
 @export var hop_force: int = 150
 
 @export_group("Passive")

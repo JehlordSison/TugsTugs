@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ActionList="*res://Game/Scripts/Global/action_list.gd"
 ObjectReferences="*res://Game/Scripts/Global/object_references.gd"
+GameHandler="*res://Game/Scripts/Global/GameHandler/game_handler.tscn"
 
 [display]
 
@@ -32,6 +33,7 @@ window/stretch/aspect="keep_width"
 game_speed=""
 game_interface=""
 player=""
+beat_meter=""
 
 [input]
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpdfaiwaapdwj"]
+
+[ext_resource type="PackedScene" uid="uid://onyej7mis4p3" path="res://Game/Entities/Mechanics/Beats/beat_form_template.tscn" id="1_3lp1t"]
+[ext_resource type="AudioStream" uid="uid://chbi4d7iupiqj" path="res://Game/Sounds/Drums/nothing.mp3" id="2_3lp1t"]
+
+[node name="BlankForm" instance=ExtResource("1_3lp1t")]
+modulate = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("2_3lp1t")

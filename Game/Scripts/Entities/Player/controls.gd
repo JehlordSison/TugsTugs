@@ -9,6 +9,8 @@ var reset_hold_timer: float = hold_timer
 
 @onready var game_interface = $"../GameInterface"
 
+signal has_input(dir: String)
+
 func _ready():
 	get_game_speed()
 #
@@ -17,8 +19,6 @@ func _ready():
 			
 func _unhandled_input(_event):
 	key_press()
-	if(Input.is_action_just_pressed("jump")):
-		character_physics.Jump()
 	if(Input.is_action_just_pressed("restart")):
 		get_tree().reload_current_scene()
 	
@@ -57,6 +57,7 @@ func get_game_speed() -> void:
 func _on_game_speed_timer_timeout():
 	if(input_list_arr.size() > 0):
 		if(character_physics.actor.is_on_floor()):
+			has_input.emit(input_list_arr.get(0))
 			move_to(input_list_arr.get(0))
 			game_interface.play_direction_key(input_list_arr.get(0))
 			game_interface.delete_arrow_queue(0)

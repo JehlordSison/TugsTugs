@@ -1,14 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://b7j1a13blte40"]
+[gd_scene load_steps=25 format=3 uid="uid://b7j1a13blte40"]
 
-[ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/UI/game_interface.gd" id="1_vsudi"]
+[ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/Scripts/UI/game_interface.gd" id="1_vsudi"]
 [ext_resource type="Texture2D" uid="uid://d0mkuuolpsten" path="res://Game/Assets/UI/arrows.png" id="2_mj7jt"]
 [ext_resource type="Texture2D" uid="uid://b50uufwmd6e43" path="res://Game/Assets/UI/beat.png" id="3_4romp"]
-[ext_resource type="Texture2D" uid="uid://dufpx0wa2omux" path="res://Game/Assets/UI/Timer/under.png" id="4_avyol"]
-[ext_resource type="Texture2D" uid="uid://bu2xgoyxwh5ca" path="res://Game/Assets/UI/Timer/1.png" id="5_pdp04"]
-[ext_resource type="Texture2D" uid="uid://y6khf3an0wxl" path="res://Game/Assets/UI/Timer/2.png" id="6_xyka4"]
-[ext_resource type="Texture2D" uid="uid://ocqo6ei0xcv4" path="res://Game/Assets/UI/Timer/3.png" id="7_w30ps"]
-[ext_resource type="Texture2D" uid="uid://c5otkojqvcfye" path="res://Game/Assets/UI/Timer/4.png" id="8_ahq5n"]
-[ext_resource type="Texture2D" uid="uid://bl6e623adyilr" path="res://Game/Assets/UI/Timer/5.png" id="9_qnckl"]
+[ext_resource type="PackedScene" uid="uid://bb6ku4l46ojan" path="res://Game/UI/beat_meter.tscn" id="4_avyol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj7jt"]
 atlas = ExtResource("2_mj7jt")
@@ -182,19 +177,6 @@ _data = {
 &"slide": SubResource("Animation_4romp")
 }
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_58e5n"]
-frames = 5
-speed_scale = 10.0
-frame_0/texture = ExtResource("5_pdp04")
-frame_1/texture = ExtResource("6_xyka4")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("7_w30ps")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("8_ahq5n")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("9_qnckl")
-frame_4/duration = 1.0
-
 [node name="GameInterface" type="CanvasLayer" groups=["game_interface"]]
 script = ExtResource("1_vsudi")
 
@@ -230,11 +212,8 @@ libraries = {
 
 [node name="Node" type="Node" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-texture_filter = 1
-offset_top = 96.0
-offset_right = 64.0
-offset_bottom = 160.0
-value = 100.0
-texture_under = ExtResource("4_avyol")
-texture_progress = SubResource("AnimatedTexture_58e5n")
+[node name="BeatMeter" parent="." instance=ExtResource("4_avyol")]
+offset_left = 8.0
+offset_top = 208.0
+offset_right = 72.0
+offset_bottom = 272.0
