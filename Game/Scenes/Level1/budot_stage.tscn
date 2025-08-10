@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://xafr8cpvi5h8"]
+[gd_scene load_steps=11 format=4 uid="uid://xafr8cpvi5h8"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_e3ynk"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="3_tabp1"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://beplfj1wg18x7" path="res://Game/Entities/Mechanics/Beats/hat_form.tscn" id="6_q44qo"]
 [ext_resource type="PackedScene" uid="uid://gwji771jy7u0" path="res://Game/Entities/Mechanics/Beats/snare_form.tscn" id="7_pei0r"]
 [ext_resource type="PackedScene" uid="uid://c7knpchrgxg2t" path="res://Game/Entities/Mechanics/Beats/riser_form.tscn" id="8_q44qo"]
-[ext_resource type="AudioStream" uid="uid://3rt2hjih7akn" path="res://Game/Sounds/Drums/level1_loop.mp3" id="9_pei0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idcyo"]
 texture = ExtResource("1_e3ynk")
@@ -318,15 +317,10 @@ position = Vector2(240, 916)
 position = Vector2(176, 964)
 
 [node name="GameSpeed" parent="." instance=ExtResource("4_ydnfg")]
-wait_time = 0.42
+wait_time = 0.428
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
 [node name="Player" parent="." instance=ExtResource("3_tabp1")]
 position = Vector2(208, 168)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_pei0r")
-volume_db = 17.442
-autoplay = true

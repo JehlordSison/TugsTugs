@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://ccm7q712x1q8f"]
+[gd_scene load_steps=8 format=4 uid="uid://ccm7q712x1q8f"]
 
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="1_bhl1n"]
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="2_dumhb"]
 [ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_m417t"]
+[ext_resource type="Texture2D" uid="uid://b3ljr8djhlprk" path="res://Game/Assets/matrix.png" id="5_hrsa1"]
+[ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="5_tybts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("2_dumhb")
@@ -100,12 +102,20 @@ tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAA
 tile_set = SubResource("TileSet_m417t")
 
 [node name="Player" parent="." instance=ExtResource("1_bhl1n")]
-position = Vector2(208, 176)
+position = Vector2(16, 176)
 
 [node name="GameSpeed" parent="." instance=ExtResource("3_m417t")]
+song_bpm = 140.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-autoplay = true
+[node name="Matrix" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(224, 128)
+texture = ExtResource("5_hrsa1")
+
+[node name="Beats" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Beats" instance=ExtResource("5_tybts")]
+position = Vector2(336, 184)

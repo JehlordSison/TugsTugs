@@ -27,20 +27,20 @@ func key_press() -> void:
 		if(Input.is_action_just_pressed(action)):
 			max_input_reached(action)
 			
-func key_hold(delta: float) -> void:
-	var pressing: bool = false
-	for action in ActionList.ACTIONS:
-		if(Input.is_action_pressed(action)):
-			if(hold_timer >= 0):
-				pressing = true
-				hold_timer -= delta
-			else:
-				hold_timer = reset_hold_timer
-				max_input_reached(action)
-			break
+#func key_hold(delta: float) -> void:
+	#var pressing: bool = false
+	#for action in ActionList.ACTIONS:
+		#if(Input.is_action_pressed(action)):
+			#if(hold_timer >= 0):
+				#pressing = true
+				#hold_timer -= delta
+			#else:
+				#hold_timer = reset_hold_timer
+				#max_input_reached(action)
+			#break
 			
-	if(pressing == false):
-		hold_timer = reset_hold_timer
+	#if(pressing == false):
+		#hold_timer = reset_hold_timer
 
 func max_input_reached(action: String) -> void:
 	if(input_list_arr.size() <= 4):
@@ -51,10 +51,10 @@ func action_direction(dir: ActionList.Direction) -> String:
 	return ActionList.Direction.keys()[dir]
 
 func get_game_speed() -> void:
-	var timer: Timer = get_tree().get_first_node_in_group("game_speed")
-	timer.connect("timeout", _on_game_speed_timer_timeout)
+	var game_speed: Node = get_tree().get_first_node_in_group("game_speed")
+	game_speed.connect("tick", _on_game_speed_tick)
 
-func _on_game_speed_timer_timeout():
+func _on_game_speed_tick() -> void:
 	if(input_list_arr.size() > 0):
 		if(character_physics.actor.is_on_floor()):
 			has_input.emit(input_list_arr.get(0))
@@ -71,4 +71,5 @@ func move_to(action: String) -> void:
 			character_physics.Movement_Snap(Vector2.RIGHT.x)
 		"Up":
 			character_physics.Jump()
-			
+		"Down":
+			pass

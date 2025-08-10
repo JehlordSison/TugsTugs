@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5i4cg6kwmjfa"]
+
+[ext_resource type="Texture2D" uid="uid://cmrcbm8r2k0aa" path="res://Game/Assets/Aesthetics/cursor.png" id="1_lst0i"]
+[ext_resource type="Script" uid="uid://gwuvx8oex7im" path="res://Game/Scripts/Mechanics/spawner.gd" id="1_n61th"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n61th"]
+atlas = ExtResource("1_lst0i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c60cs"]
+atlas = ExtResource("1_lst0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3euw"]
+atlas = ExtResource("1_lst0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktg3k"]
+atlas = ExtResource("1_lst0i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3hpv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n61th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c60cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3euw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktg3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_n61th")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g3hpv")
+autoplay = "default"
+frame_progress = 0.134199

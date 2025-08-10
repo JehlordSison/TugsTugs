@@ -15,9 +15,13 @@ func play_direction_key(dir: String) -> void:
 		"Up":
 			arrow_animation.play("up")
 			animation_player.play("slide")
+		"Down":
+			arrow_animation.play("down")
+			animation_player.play("slide")
 		"":
-			arrow_animation.play("none")
-			animation_player.play("RESET")
+			if(arrow_animation.animation == "none"):
+				arrow_animation.play("none")
+				animation_player.play("RESET")
 			
 	await arrow_animation.animation_finished
 	arrow_animation.play("none")
@@ -26,6 +30,7 @@ func add_arrow_queue(dir: String) -> void:
 	var Left := ObjectReferences.LEFT_ARROW_QUEUE.instantiate()
 	var Right := ObjectReferences.RIGHT_ARROW_QUEUE.instantiate()
 	var Up := ObjectReferences.UP_ARROW_QUEUE.instantiate()
+	var Down := ObjectReferences.DOWN_ARROW_QUEUE.instantiate()
 	
 	match dir: 
 		"Right":
@@ -34,6 +39,8 @@ func add_arrow_queue(dir: String) -> void:
 			h_box_container.add_child(Left)
 		"Up":
 			h_box_container.add_child(Up)
+		"Down":
+			h_box_container.add_child(Down)
 			
 func delete_arrow_queue(index: int) -> void:
 	if(h_box_container.get_children().size() > 0):

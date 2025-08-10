@@ -12,4 +12,5 @@ func _on_controls_has_input(dir):
 			Set_State("Hop")
 		"Up":
 			Set_State("Jump")
-		
+		"Down":
+			Set_State("Dance")

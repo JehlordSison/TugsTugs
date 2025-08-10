@@ -1,9 +1,25 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7j1a13blte40"]
+[gd_scene load_steps=29 format=3 uid="uid://b7j1a13blte40"]
 
 [ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/Scripts/UI/game_interface.gd" id="1_vsudi"]
 [ext_resource type="Texture2D" uid="uid://d0mkuuolpsten" path="res://Game/Assets/UI/arrows.png" id="2_mj7jt"]
 [ext_resource type="Texture2D" uid="uid://b50uufwmd6e43" path="res://Game/Assets/UI/beat.png" id="3_4romp"]
 [ext_resource type="PackedScene" uid="uid://bb6ku4l46ojan" path="res://Game/UI/beat_meter.tscn" id="4_avyol"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylblh"]
+atlas = ExtResource("2_mj7jt")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3py8"]
+atlas = ExtResource("2_mj7jt")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y0kc"]
+atlas = ExtResource("2_mj7jt")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ooib"]
+atlas = ExtResource("2_mj7jt")
+region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj7jt"]
 atlas = ExtResource("2_mj7jt")
@@ -71,6 +87,23 @@ region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mmm6m"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylblh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3py8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y0kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ooib")
+}],
+"loop": false,
+"name": &"down",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mj7jt")
@@ -152,7 +185,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(224, 24)]
+"values": [Vector2(48, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_4romp"]
@@ -168,7 +201,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(272, 24), Vector2(224, 24)]
+"values": [Vector2(112, 24), Vector2(48, 24)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_un82k"]
@@ -180,27 +213,38 @@ _data = {
 [node name="GameInterface" type="CanvasLayer" groups=["game_interface"]]
 script = ExtResource("1_vsudi")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 32.0
+offset_right = -263.0
 offset_bottom = -176.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.123473, 0.123473, 0.123473, 1)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 256.0
+offset_left = 96.0
 offset_top = 8.0
-offset_right = 288.0
+offset_right = 128.0
 offset_bottom = 40.0
 
 [node name="ArrowAnimation" type="AnimatedSprite2D" parent="Panel"]
 texture_filter = 1
-position = Vector2(224, 24)
+position = Vector2(48, 24)
 sprite_frames = SubResource("SpriteFrames_mmm6m")
-animation = &"none"
+animation = &"down"
 autoplay = "none"
 frame = 3
 frame_progress = 1.0

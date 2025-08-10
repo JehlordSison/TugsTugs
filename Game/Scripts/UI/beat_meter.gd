@@ -6,7 +6,7 @@ var colors: Array = ["00c500", "b3c200", "ff4a00", "ff0000"]
 func _ready():
 	start_beat_meter()
 
-func _process(delta):
+func _process(_delta):
 	var select_color: Color
 	#	Colors
 	if(value >= max_value * .75):
