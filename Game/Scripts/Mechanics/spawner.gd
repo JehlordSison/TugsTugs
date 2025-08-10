@@ -19,8 +19,13 @@ func get_player_position() -> void:
 	print(player.global_position.x)
 	# Snap player position to closest tile value, then offset
 	var snapped_player_x = snap_to_closest_tile(player.global_position.x)
-	global_position.x = snapped_player_x + 32
-
+	#global_position.x = snapped_player_x + 32
+	
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", Vector2(snapped_player_x + 32,global_position.y),.09 )
+	tween.stop()
+	tween.play()
+	
 func snap_to_closest_tile(position: float) -> float:
 	var closest_tile = tiles[0]
 	var min_distance = abs(position - closest_tile)

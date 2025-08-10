@@ -102,7 +102,7 @@ tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAA
 tile_set = SubResource("TileSet_m417t")
 
 [node name="Player" parent="." instance=ExtResource("1_bhl1n")]
-position = Vector2(16, 176)
+position = Vector2(208, 176)
 
 [node name="GameSpeed" parent="." instance=ExtResource("3_m417t")]
 song_bpm = 140.0
@@ -118,4 +118,4 @@ texture = ExtResource("5_hrsa1")
 [node name="Beats" type="Node2D" parent="."]
 
 [node name="Spawner" parent="Beats" instance=ExtResource("5_tybts")]
-position = Vector2(336, 184)
+position = Vector2(-80, 184)
