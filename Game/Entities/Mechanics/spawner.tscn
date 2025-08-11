@@ -46,4 +46,4 @@ script = ExtResource("1_n61th")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g3hpv")
 autoplay = "default"
-frame_progress = 0.687606
+frame_progress = 0.77809

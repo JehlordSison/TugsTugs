@@ -141,4 +141,4 @@ libraries = {
 position = Vector2(32, 16)
 scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_s5t8u")
-animation = &"perfect"
+animation = &"good"
