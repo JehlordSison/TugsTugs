@@ -33,7 +33,8 @@ window/stretch/aspect="keep_width"
 game_speed=""
 game_interface=""
 player=""
-beat_meter=""
+beat_duration=""
+quality_press=""
 
 [input]
 

@@ -1,16 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnb3ds8ordxk4"]
+[gd_scene load_steps=3 format=3 uid="uid://bnb3ds8ordxk4"]
 
 [ext_resource type="Script" uid="uid://31atjdimplhe" path="res://Game/Scripts/Mechanics/game_speed.gd" id="1_u263p"]
-[ext_resource type="AudioStream" uid="uid://xyihy3du2k6g" path="res://Game/Sounds/Drums/metronome.mp3" id="2_w4qxv"]
 [ext_resource type="AudioStream" uid="uid://cdt0mwrjh0k7f" path="res://Game/Sounds/budots.mp3" id="3_rcthk"]
 
-[node name="GameSpeed" type="Node" groups=["game_speed"]]
-script = ExtResource("1_u263p")
-song_bpm = 0.0
-
-[node name="Metronome" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_w4qxv")
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="GameSpeed" type="AudioStreamPlayer" groups=["game_speed"]]
 stream = ExtResource("3_rcthk")
 autoplay = true
+script = ExtResource("1_u263p")

@@ -16,7 +16,7 @@ func _ready():
 func _on_body_entered(_body):
 	hop_count -= 1
 	marker.play("In")
-	add_more_time_to_beat_meter()
+	#add_more_time_to_beat_meter()
 	if(hop_count <= 0):
 		collision_shape_2d.set_deferred("disabled", true)
 		
@@ -30,9 +30,11 @@ func _on_body_entered(_body):
 
 		queue_free()
 		
-func add_more_time_to_beat_meter() -> void:
-	var beat_meter: TextureProgressBar = get_tree().get_first_node_in_group("beat_meter")
-	beat_meter.add_time()
+#func add_more_time_to_beat_meter() -> void:
+	#var beat_meter: TextureProgressBar = get_tree().get_first_node_in_group("beat_meter")
+	#beat_meter.add_time()
+
+#func 
 	
 #func spawn_new_tile() -> void:
 	#var new_tile = ObjectReferences.TILE_FORM.instantiate()

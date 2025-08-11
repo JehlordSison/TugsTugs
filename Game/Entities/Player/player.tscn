@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dntuv8soi5afl"]
+[gd_scene load_steps=15 format=3 uid="uid://dntuv8soi5afl"]
 
 [ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/Entities/Player/sprite.png" id="1_cyq5s"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b23je87nhd662" path="res://Game/Scripts/Entities/Player/StateMachine/fall.gd" id="8_uai14"]
 [ext_resource type="Script" uid="uid://buqemee7vlba0" path="res://Game/Scripts/Entities/Player/StateMachine/jump.gd" id="8_yj5xo"]
 [ext_resource type="Script" uid="uid://glbx01i22rht" path="res://Game/Scripts/Entities/Player/StateMachine/death.gd" id="9_yj5xo"]
+[ext_resource type="Script" uid="uid://cbh632h5ustm0" path="res://Game/Scripts/Entities/Player/quality_press.gd" id="13_ev5uv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
 radius = 14.0357
@@ -61,12 +62,15 @@ metadata/_custom_type_script = "uid://glbx01i22rht"
 script = ExtResource("2_ipj5g")
 actor = NodePath("..")
 jump_force = 150
-gravity_force = -760
+gravity_force = -780
+snap_rate = 25
 metadata/_custom_type_script = "uid://cxmfqkuqpxv7r"
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("4_ulv0d")
-hold_timer = 0.3
+
+[node name="PressTimer" type="Timer" parent="Controls"]
+one_shot = true
 
 [node name="GameInterface" parent="." instance=ExtResource("5_5028t")]
 
@@ -76,5 +80,9 @@ offset_top = -42.0
 offset_right = 19.0
 offset_bottom = -19.0
 
+[node name="QualityPress" type="Node" parent="." groups=["quality_press"]]
+script = ExtResource("13_ev5uv")
+
 [connection signal="has_input" from="Controls" to="StateMachine/Idle" method="_on_controls_has_input"]
 [connection signal="has_input" from="Controls" to="StateMachine/Dance" method="_on_controls_has_input"]
+[connection signal="has_input" from="Controls" to="QualityPress" method="_on_controls_has_input"]

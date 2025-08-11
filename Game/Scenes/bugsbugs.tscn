@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://ccm7q712x1q8f"]
+[gd_scene load_steps=9 format=4 uid="uid://okg7l65fd1vd"]
 
-[ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="1_bhl1n"]
-[ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="2_dumhb"]
-[ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_m417t"]
-[ext_resource type="Texture2D" uid="uid://b3ljr8djhlprk" path="res://Game/Assets/matrix.png" id="5_hrsa1"]
-[ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="5_tybts"]
+[ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_0n4lu"]
+[ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_6eop4"]
+[ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_xx1xm"]
+[ext_resource type="Texture2D" uid="uid://b3ljr8djhlprk" path="res://Game/Assets/matrix.png" id="4_8syn5"]
+[ext_resource type="AudioStream" uid="uid://fgvqb7vm4es3" path="res://Game/Sounds/tugstugs.mp3" id="4_ymf2b"]
+[ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="5_l33j1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
-texture = ExtResource("2_dumhb")
+texture = ExtResource("1_0n4lu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -101,21 +102,21 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAAAAAYAAgABAAAAAAAAAAcAAgABAAIAAAAMAAYAAgABAAAAAAANAAcAAgABAAIAAAANAAYAAgABAAAAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAAOAAUAAgABAAEAAAAOAAQAAgABAAEAAAAOAAMAAgABAAEAAAAOAAIAAgABAAEAAAAOAAEAAgABAAEAAAAOAAAAAgABAAEAAAAOAP//AgABAAEAAAAOAP7/AgABAAAAAAD//wcAAgABAAIAAAD+/wcAAgABAAIAAAD+/wYAAgABAAEAAAD+/wUAAgABAAEAAAD+/wQAAgABAAEAAAD+/wMAAgABAAEAAAD+/wIAAgABAAEAAAD+/wEAAgABAAEAAAD+/wAAAgABAAAAAAD+//7/AgABAAAAAAD+////AgAAAAIAAAD/////AgACAAIAAAD///7/AgACAAAAAAD//wAAAgACAAEAAAD//wEAAgACAAEAAAD//wIAAgACAAEAAAD//wMAAgACAAEAAAD//wQAAgACAAEAAAD//wUAAgABAAEAAAD//wYAAgABAAEAAAAPAAcAAgACAAIAAAAPAAYAAgACAAEAAAAPAAUAAgACAAEAAAAPAAQAAgACAAEAAAAPAAMAAgACAAEAAAAPAAIAAgACAAEAAAAPAAEAAgACAAEAAAAPAAAAAgACAAEAAAAPAP//AgACAAEAAAAPAP7/AgACAAAAAAA=")
 tile_set = SubResource("TileSet_m417t")
 
-[node name="Player" parent="." instance=ExtResource("1_bhl1n")]
+[node name="Player" parent="." instance=ExtResource("2_6eop4")]
 position = Vector2(208, 176)
 
-[node name="GameSpeed" parent="." instance=ExtResource("3_m417t")]
+[node name="GameSpeed" parent="." instance=ExtResource("3_xx1xm")]
+stream = ExtResource("4_ymf2b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
 [node name="Matrix" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(224, 128)
-texture = ExtResource("5_hrsa1")
+texture = ExtResource("4_8syn5")
 
 [node name="Beats" type="Node2D" parent="."]
 
-[node name="Spawner" parent="Beats" instance=ExtResource("5_tybts")]
+[node name="Spawner" parent="Beats" instance=ExtResource("5_l33j1")]
 position = Vector2(-80, 184)

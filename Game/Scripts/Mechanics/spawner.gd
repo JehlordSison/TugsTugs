@@ -2,6 +2,7 @@ extends Node2D
 
 var tiles: Array = [16, 48, 80, 112, 144, 176, 208, 240, 272, 304, 336, 368, 400, 432]
 var current_tile: int 
+var beat_count: int = 4
 
 func _ready():
 	get_game_speed()
@@ -35,12 +36,12 @@ func move_to(pos: int) -> void:
 	tween.stop()
 	tween.play()
 
-func snap_to_closest_tile(position: float) -> float:
+func snap_to_closest_tile(pos: float) -> float:
 	var closest_tile = tiles[0]
-	var min_distance = abs(position - closest_tile)
+	var min_distance = abs(pos - closest_tile)
 	
 	for tile in tiles:
-		var distance = abs(position - tile)
+		var distance = abs(pos - tile)
 		if distance < min_distance:
 			min_distance = distance
 			closest_tile = tile

@@ -12,6 +12,9 @@ class_name CharacterPhysics
 @export var gravity_force: int = -750
 @export var hop_force: int = 150
 
+var move_count: int = 1
+var reset_move_count: int = move_count
+
 @export_group("Passive")
 @export var move_snap: int = 16
 @export var snap_rate: int = 5
@@ -24,12 +27,20 @@ class_name CharacterPhysics
 
 func _physics_process(delta):
 	Snap(delta)
+	if(actor.is_on_floor()):
+		move_count = reset_move_count
+	
+	if(actor.velocity.y > 0):
+		gravity_force = -1000
+	else:
+		gravity_force = -780
 
 func Movement_Snap(input: float) -> void:
 	if(input and can_move == true):
-		actor.velocity.x += input * movement_speed 
-		if(actor.is_on_floor()):
+		if(move_count > 0):
+			actor.velocity.x += input * movement_speed 
 			actor.velocity.y -= hop_force
+			move_count -= 1
 	
 func Snap(delta: float) -> void:
 	if(actor.is_on_floor()):
@@ -40,8 +51,9 @@ func Snap(delta: float) -> void:
 
 func Jump() -> void:
 	if(can_jump):
-		if(actor.is_on_floor()):
+		if(move_count > 0):
 			actor.velocity.y -= jump_force
+			move_count -= 1
 
 func Gravity(delta: float) -> void:
 	if!(actor.is_on_floor()):
