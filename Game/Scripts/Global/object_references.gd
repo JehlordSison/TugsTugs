@@ -8,3 +8,6 @@ const DOWN_ARROW_QUEUE = preload("res://Game/UI/ArrowsQueue/down_arrow_queue.tsc
 
 #	TileForm
 const TILE_FORM = preload("res://Game/Entities/Mechanics/Beats/tile_form.tscn")
+
+#	Aesthetics
+const STEP_EFFECTS = preload("res://Game/Aesthetics/step_effects.tscn")
