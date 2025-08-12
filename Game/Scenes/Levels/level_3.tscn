@@ -161,6 +161,5 @@ visible = false
 next_scene = "res://Game/Scenes/Levels/level_4.tscn"
 
 [node name="IntroPlayer" parent="." instance=ExtResource("8_w0k6g")]
-root_node = NodePath("../GameOver")
 
 [connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]

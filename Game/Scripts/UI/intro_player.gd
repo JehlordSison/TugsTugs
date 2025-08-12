@@ -15,6 +15,7 @@ func _on_animation_finished(anim_name):
 	if(anim_name == "intro"):
 		animated_sprite_2d.play("shine")
 		animated_sprite_2d_2.play("shine")
+		$Shine.play()
 		await animated_sprite_2d.animation_finished
 		play("outro")
 	if(anim_name == "outro"):

@@ -13,12 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(2.40654e-08, 0.196006, 0.379791, 1)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Score" type="Label" parent="."]
 offset_left = 140.0
 offset_top = 68.0

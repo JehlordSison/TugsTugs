@@ -112,7 +112,7 @@ func _process(delta):
 	
 func get_game_interface() -> void:
 	var game_interface = get_tree().get_first_node_in_group(\"game_interface\")
-	if(game_interface.tiles_hit >= 3):
+	if(game_interface.tiles_hit >= 14):
 		if(tutorial_completed == false):
 			tutorial_completed = true
 			await get_tree().create_timer(1).timeout
