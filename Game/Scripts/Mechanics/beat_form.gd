@@ -35,12 +35,8 @@ func _on_body_entered(_body):
 	#beat_meter.add_time()
 
 #func 
-	
-#func spawn_new_tile() -> void:
-	#var new_tile = ObjectReferences.TILE_FORM.instantiate()
-	#get_parent().call_deferred("add_child", new_tile)
-	#var random_x: Array = [-32,32]
-	#var select_x: int = random_x[randi() % random_x.size()]
-	#new_tile.global_position = Vector2(global_position.x + select_x, global_position.y)
-	#print(select_x)
-	
+
+func _on_timer_timeout():
+	marker.play("Out")
+	await marker.animation_finished
+	queue_free()

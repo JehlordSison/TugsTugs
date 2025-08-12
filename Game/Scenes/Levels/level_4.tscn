@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b4lhfmiqfa6d6"]
+[gd_scene load_steps=9 format=4 uid="uid://b4lhfmiqfa6d6"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_1pmvm"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_uceeo"]
@@ -94,6 +94,16 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_erpku")
 
+[sub_resource type="GDScript" id="GDScript_1pmvm"]
+script/source = "extends Node
+
+func _process(_delta):
+	if(get_parent().beat_number == 32):
+		get_parent().update_count = 1
+	if()
+	pass
+"
+
 [node name="Level4-140" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -105,7 +115,10 @@ tile_set = SubResource("TileSet_m417t")
 position = Vector2(208, 176)
 
 [node name="GameSpeed" parent="." instance=ExtResource("3_vjfeq")]
-update_count = 1
+update_count = 2
+
+[node name="Node" type="Node" parent="GameSpeed"]
+script = SubResource("GDScript_1pmvm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)

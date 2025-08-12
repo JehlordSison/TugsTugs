@@ -12,6 +12,30 @@ var count_before_emit: int = 2
 var reset_count_before_emit: int = count_before_emit
 @export var update_count: int = count_before_emit: set = on_count_update
 
+var sequence: Array = []
+
+func _unhandled_input(_event):
+	if(Input.is_action_just_pressed("1")):
+		sequence.append(1)
+	if(Input.is_action_just_pressed("2")):
+		sequence.append(2)
+	if(Input.is_action_just_pressed("3")):
+		sequence.append(3)
+	if(Input.is_action_just_pressed("4")):
+		sequence.append(4)
+	if(Input.is_action_just_pressed("5")):
+		sequence.append(5)
+	if(Input.is_action_just_pressed("6")):
+		sequence.append(6)
+	if(Input.is_action_just_pressed("7")):
+		sequence.append(7)
+	if(Input.is_action_just_pressed("8")):
+		sequence.append(8)
+	if(Input.is_action_just_pressed("9")):
+		sequence.append(9)
+	if(Input.is_action_just_pressed("-")):
+		sequence.append(-1)
+
 func on_count_update(val):
 	count_before_emit = val
 	reset_count_before_emit = count_before_emit
@@ -42,7 +66,8 @@ func _process(_delta: float):
 				send_tick()
 				count_before_emit = reset_count_before_emit
 				#print("emitt")
-			print("Beat: ", beat_number)
+			#print("Beat: ", beat_number)
+
 		#print(count_before_emit)
 
 func get_game_interface() -> CanvasLayer:
