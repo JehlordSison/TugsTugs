@@ -12,7 +12,8 @@ var count_before_emit: int = 2
 var reset_count_before_emit: int = count_before_emit
 @export var update_count: int = count_before_emit: set = on_count_update
 
-var sequence: Array = []
+var track_end: bool = false
+signal track_finished
 
 func on_count_update(val):
 	count_before_emit = val
@@ -24,6 +25,7 @@ func _ready():
 
 func _process(_delta: float):
 	#	Update
+	
 	if music.playing:
 		song_position = music.get_playback_position() + AudioServer.get_time_since_last_mix()
 		
@@ -45,9 +47,18 @@ func _process(_delta: float):
 				count_before_emit = reset_count_before_emit
 				#print("emitt")
 			#print("Beat: ", beat_number)
-
 		#print(count_before_emit)
-
+	else:
+		if (song_remaining_time() <= 0):
+			if(track_end == false):
+				track_finished.emit()
+				track_end = true
+			
+func song_remaining_time() -> float:
+	var remaining_time: float = stream.get_length()	- song_position
+	#print(remaining_time)
+	return remaining_time
+		
 func get_game_interface() -> CanvasLayer:
 	var game_interface: CanvasLayer = get_tree().get_first_node_in_group("game_interface")
 	return game_interface

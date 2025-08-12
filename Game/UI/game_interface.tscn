@@ -298,8 +298,15 @@ texture_filter = 1
 position = Vector2(228, 31)
 sprite_frames = SubResource("SpriteFrames_avyol")
 animation = &"Bounce"
-frame = 2
+frame = 3
 frame_progress = 1.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 31.0
+text = "Score"
 
 [node name="BeatDuration" parent="." instance=ExtResource("4_avyol")]
 anchors_preset = 7

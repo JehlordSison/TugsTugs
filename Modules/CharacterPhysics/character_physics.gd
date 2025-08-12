@@ -21,8 +21,8 @@ var reset_move_count: int = move_count
 
 @export_group("Switches")
 @export var can_move: bool = true
-@export var can_decelerate: bool  = true
 @export var can_jump: bool  = true
+@export var can_decelerate: bool  = true
 @export var enable_gravity: bool = true
 
 func _physics_process(delta):

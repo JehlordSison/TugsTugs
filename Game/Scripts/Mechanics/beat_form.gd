@@ -15,8 +15,9 @@ func _ready():
 
 func _on_body_entered(_body):
 	hop_count -= 1
+	add_score()
+	
 	marker.play("In")
-	add_step_effect()
 	
 	if(hop_count <= 0):
 		collision_shape_2d.set_deferred("disabled", true)
@@ -28,9 +29,14 @@ func _on_body_entered(_body):
 			gameover.emit()
 		
 		await marker.animation_finished
-
 		queue_free()
+
+	add_step_effect()
 	
+func add_score() -> void:
+	var game_interface = get_tree().get_first_node_in_group("game_interface")
+	game_interface.score += 10
+
 func _on_timer_timeout():
 	marker.play("Out")
 	await marker.animation_finished
@@ -40,4 +46,6 @@ func add_step_effect() -> void:
 	var step_fx = ObjectReferences.STEP_EFFECTS.instantiate()
 	get_parent().call_deferred("add_child", step_fx)
 	step_fx.global_position = position
+
+
 	

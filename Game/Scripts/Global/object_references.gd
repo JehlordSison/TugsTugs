@@ -11,3 +11,6 @@ const TILE_FORM = preload("res://Game/Entities/Mechanics/Beats/tile_form.tscn")
 
 #	Aesthetics
 const STEP_EFFECTS = preload("res://Game/Aesthetics/step_effects.tscn")
+
+#	UI
+const GAME_OVER_SCREEN = preload("res://Game/UI/GameOver/game_over_screen.tscn")
