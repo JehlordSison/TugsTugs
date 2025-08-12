@@ -114,8 +114,10 @@ shape = SubResource("RectangleShape2D_q3am0")
 
 [node name="Marker" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -16)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_b5rxe")
 animation = &"In"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
