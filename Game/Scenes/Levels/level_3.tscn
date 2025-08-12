@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://mkopejdxxxmx"]
+[gd_scene load_steps=11 format=4 uid="uid://mkopejdxxxmx"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_yw3uc"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_wxa4l"]
@@ -95,6 +95,34 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_erpku")
 
+[sub_resource type="GDScript" id="GDScript_iuccv"]
+script/source = "extends Node
+
+func _process(_delta):
+	if(get_parent().beat_number == 48):
+		get_parent().update_count = 1
+"
+
+[sub_resource type="GDScript" id="GDScript_jmc5d"]
+script/source = "extends Node
+
+var sequence: Array = [
+	7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 
+	3, 2, 1, 0, -1, 0, 1, 2, 3, 2, 
+	1, 0, -1, 1, 2, 3, 4, 5, 6, 7, 
+	8, 9, 10, 11, 12, 13, 12, 11, 
+	10, 9, 8, 7, 6, 5, 4, 5, 6, 7, 
+	8, 9, 10, 11, 12, 11, 10, 9, 8, 
+	7, 6, 5, 4, 3, 4, 5, 6, 7, 8, 9, 
+	10, 11, 12, 13, 12, 11, 10, 9, 8, 
+	7, 6, 5, 4, 3, 2, 3, 4, 5, 6, 7, 
+	8, 9, 10, 11, 12, 13, -1, 13, 12]
+	
+func _ready():
+	get_parent().sequence = sequence
+	
+"
+
 [node name="Level3-140" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -109,6 +137,9 @@ position = Vector2(208, 176)
 stream = ExtResource("4_iuccv")
 update_count = 2
 
+[node name="UpdateCount" type="Node" parent="GameSpeed"]
+script = SubResource("GDScript_iuccv")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
@@ -122,3 +153,6 @@ texture = ExtResource("4_o200b")
 
 [node name="Spawner" parent="Beats" instance=ExtResource("5_wb08q")]
 position = Vector2(-80, 184)
+
+[node name="Sequence" type="Node" parent="Beats/Spawner"]
+script = SubResource("GDScript_jmc5d")

@@ -1,8 +1,15 @@
 extends Node2D
 var tiles: Array = [16, 48, 80, 112, 144, 176, 208, 240, 272, 304, 336, 368, 400, 432]
 var current_tile: int 
-#@export var sequence: Array = [7,8,9,10,-1,-1,13,0,1,2,3,4,5,-1] ## Bawal mag exceed sa 13d
-@export var sequence: Array = [7,8,9, 8, 7, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9, -1, -1, 8, 7, 8, 7, 8, 7, 8, 7, 6, 5, 6, 5, 6, 5, 6, 5, 4, 5, 4, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 6, 5, 7, 8, 7, 8, 9, 8, 9, 8, 7, 8, 7, 8, 6, 5, 6, 5, 4, 5, 4, 5, 3, 2, 3, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 5, 6, 5, 4, 5, 6, 7, 8, 9]
+@export var sequence: Array = []
+
+#@export var sequence: Array = [
+	#7 ,8 ,9, 8, 7, 6, 7, 8, 9, 8, 
+	#7, 6, 7, 8, 9, 8, 7, 6, 7, 8, 
+	#9, 8, 7, 8, 7, 8, 7, 8, -1, -1, 
+	#9, 8, 7, 6, 5, 6, 5, 6, 5, 4, 
+	#5, 4, 5, 4, 3, 2, 1, 2, 3, 4, 
+	#5, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 6, 5, 7, 8, 7, 8, 9, 8, 9, 8, 7, 8, 7, 8, 6, 5, 6, 5, 4, 5, 4, 5, 3, 2, 3, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 5, 6, 5, 4, 5, 6, 7, 8, 9,10]
 
 # Direction detection variables
 enum Direction { NONE, LEFT, RIGHT }
@@ -25,6 +32,7 @@ func on_game_speed_tick() -> void:
 			if(tile_forms_exceeded() == false):
 				move_to(sequence[0])
 		else:
+			arrow_indicator.play("none")
 			sequence.remove_at(0)
 
 func move_to(pos: int) -> void:
@@ -64,31 +72,14 @@ func predict_next_direction() -> void:
 			# Emit signal if direction changed
 			if old_direction != current_direction:
 				direction_changed.emit(current_direction)
-				print("Next direction will be: ", direction_to_string(current_direction))
+				#print("Next direction will be: ", direction_to_string(current_direction))
 		else:
 			# No more valid moves, set to NONE
 			if current_direction != Direction.NONE:
 				current_direction = Direction.NONE
 				direction_changed.emit(current_direction)
-				print("Sequence ended, direction: NONE")
+				#print("Sequence ended, direction: NONE")
 
-func detect_direction(new_tile_index: int) -> void:
-	if previous_tile_index != -1:
-		var old_direction = current_direction
-		
-		if new_tile_index > previous_tile_index:
-			current_direction = Direction.RIGHT
-		elif new_tile_index < previous_tile_index:
-			current_direction = Direction.LEFT
-		else:
-			current_direction = Direction.NONE
-		
-		# Emit signal if direction changed
-		if old_direction != current_direction:
-			direction_changed.emit(current_direction)
-			print("Direction changed to: ", direction_to_string(current_direction))
-	
-	previous_tile_index = new_tile_index
 
 func direction_to_string(dir: Direction) -> String:
 	match dir:
