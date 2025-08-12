@@ -17,6 +17,7 @@ func on_count_update(val):
 	reset_count_before_emit = count_before_emit
 
 func _ready():
+	beat_per_seconds = 60.0 / song_bpm
 	reset_count_before_emit = count_before_emit
 
 func _process(_delta: float):
@@ -41,7 +42,7 @@ func _process(_delta: float):
 				send_tick()
 				count_before_emit = reset_count_before_emit
 				#print("emitt")
-			#print("Beat: ", beat_number)
+			print("Beat: ", beat_number)
 		#print(count_before_emit)
 
 func get_game_interface() -> CanvasLayer:

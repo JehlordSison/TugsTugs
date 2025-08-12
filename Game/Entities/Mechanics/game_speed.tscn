@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnb3ds8ordxk4"]
 
 [ext_resource type="Script" uid="uid://31atjdimplhe" path="res://Game/Scripts/Mechanics/game_speed.gd" id="1_u263p"]
-[ext_resource type="AudioStream" uid="uid://cdt0mwrjh0k7f" path="res://Game/Sounds/budots.mp3" id="3_rcthk"]
+[ext_resource type="AudioStream" uid="uid://didar6v6kpe0u" path="res://Game/Sounds/budots_140.mp3" id="1_w4qxv"]
 
 [node name="GameSpeed" type="AudioStreamPlayer" groups=["game_speed"]]
-stream = ExtResource("3_rcthk")
+stream = ExtResource("1_w4qxv")
 autoplay = true
 script = ExtResource("1_u263p")

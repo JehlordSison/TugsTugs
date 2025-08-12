@@ -39,6 +39,7 @@ func get_quality_press() -> void:
 	quality_press.connect("quality",_on_quality_press_emit)
 	
 func _on_quality_press_emit(type) -> void:
+	$AnimationPlayer.stop()
 	$AnimationPlayer.play("pop")
 	$AnimatedSprite2D.play(str(type).to_lower())
 	

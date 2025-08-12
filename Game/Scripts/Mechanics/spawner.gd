@@ -2,7 +2,7 @@ extends Node2D
 
 var tiles: Array = [16, 48, 80, 112, 144, 176, 208, 240, 272, 304, 336, 368, 400, 432]
 var current_tile: int 
-var beat_count: int = 4
+
 
 func _ready():
 	get_game_speed()
@@ -14,6 +14,7 @@ func get_game_speed() -> void:
 
 func _on_game_speed_tick() -> void:
 	pass
+	#move_to()
 	#get_player_position()
 #
 #func get_player_position() -> void:
@@ -28,6 +29,8 @@ func _on_game_speed_tick() -> void:
 	#tween.tween_property(self, "global_position", Vector2(snapped_player_x + 32,global_position.y),.09 )
 	#tween.stop()
 	#tween.play()
+	
+#func sequence
 
 func move_to(pos: int) -> void:
 	tiles[pos]
@@ -35,6 +38,8 @@ func move_to(pos: int) -> void:
 	tween.tween_property(self, "global_position", Vector2(tiles[pos],global_position.y),.09 )
 	tween.stop()
 	tween.play()
+	await tween.finished
+	spawn_tile(tiles[pos])
 
 func snap_to_closest_tile(pos: float) -> float:
 	var closest_tile = tiles[0]
@@ -46,5 +51,9 @@ func snap_to_closest_tile(pos: float) -> float:
 			min_distance = distance
 			closest_tile = tile
 			current_tile = tiles.find(tile)
-	
 	return closest_tile
+
+func spawn_tile(pos: int) -> void:
+	var tile = ObjectReferences.TILE_FORM.instantiate()
+	get_parent().call_deferred("add_child", tile)
+	tile.global_position = Vector2(pos, global_position.y)
