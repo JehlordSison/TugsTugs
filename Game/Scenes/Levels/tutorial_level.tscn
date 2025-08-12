@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cv5iqva4xnrca"]
+[gd_scene load_steps=11 format=4 uid="uid://cv5iqva4xnrca"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_esvst"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_a8mau"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://fgvqb7vm4es3" path="res://Game/Sounds/tugstugs.mp3" id="4_tk4yo"]
 [ext_resource type="Texture2D" uid="uid://b3ljr8djhlprk" path="res://Game/Assets/matrix.png" id="5_l2jjq"]
 [ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="6_tjnp7"]
+[ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="7_jgko2"]
+[ext_resource type="PackedScene" uid="uid://bwjcy6tkuu38t" path="res://Game/UI/GameOver/game_over_screen.tscn" id="8_tk4yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("1_esvst")
@@ -122,3 +124,10 @@ texture = ExtResource("5_l2jjq")
 
 [node name="Spawner" parent="Beats" instance=ExtResource("6_tjnp7")]
 position = Vector2(-80, 184)
+
+[node name="GameInterface" parent="." instance=ExtResource("7_jgko2")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_tk4yo")]
+visible = false
+
+[connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]
