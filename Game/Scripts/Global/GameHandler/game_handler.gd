@@ -12,12 +12,18 @@ func _on_update_game_state(val):
 
 func _ready():
 	GameState
-
+	
+func GameMenu() -> void:
+	get_tree().paused = false
+	
 func GamePlaying() -> void:
 	get_tree().paused = false
 	
 func GamePause() -> void:
 	get_tree().paused = true
 	
+func GameRestart() -> void:
+	get_tree().reload_current_scene()
+
 func GameOver()	-> void:
 	pass

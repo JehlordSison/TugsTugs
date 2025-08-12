@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cv5iqva4xnrca"]
+[gd_scene load_steps=12 format=4 uid="uid://cv5iqva4xnrca"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_esvst"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_a8mau"]
@@ -97,6 +97,34 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_erpku")
 
+[sub_resource type="GDScript" id="GDScript_jgko2"]
+script/source = "extends Node
+
+var sequence: Array = [7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6]
+
+var tutorial_completed: bool = false
+
+func _ready(): 
+	get_parent().sequence = sequence
+
+func _process(delta):
+	get_game_interface()
+	
+func get_game_interface() -> void:
+	var game_interface = get_tree().get_first_node_in_group(\"game_interface\")
+	if(game_interface.tiles_hit >= 3):
+		if(tutorial_completed == false):
+			tutorial_completed = true
+			await get_tree().create_timer(1).timeout
+			get_game_speed()
+	else:
+		get_parent().sequence = sequence
+
+func get_game_speed() -> void:
+	var game_speed = get_tree().get_first_node_in_group(\"game_speed\")
+	game_speed.force_end_game()
+"
+
 [node name="TutorialLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -109,6 +137,7 @@ position = Vector2(208, 176)
 
 [node name="GameSpeed" parent="." instance=ExtResource("3_jgko2")]
 stream = ExtResource("4_tk4yo")
+song_is_looped = true
 update_count = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -125,9 +154,13 @@ texture = ExtResource("5_l2jjq")
 [node name="Spawner" parent="Beats" instance=ExtResource("6_tjnp7")]
 position = Vector2(-80, 184)
 
+[node name="Sequence" type="Node" parent="Beats/Spawner"]
+script = SubResource("GDScript_jgko2")
+
 [node name="GameInterface" parent="." instance=ExtResource("7_jgko2")]
 
 [node name="GameOver" parent="." instance=ExtResource("8_tk4yo")]
 visible = false
+next_scene = "res://Game/Scenes/Levels/level_1.tscn"
 
 [connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]

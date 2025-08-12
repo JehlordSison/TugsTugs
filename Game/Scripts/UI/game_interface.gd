@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var score_label = $ScoreLabel
 
 var score: int = 0: set = _on_update_score
+var tiles_hit: int = 0
 
 func _on_update_score(val):
 	score = val

@@ -1,11 +1,21 @@
-[gd_scene load_steps=11 format=4 uid="uid://b5jfefe23x5yk"]
+[gd_scene load_steps=13 format=4 uid="uid://b5jfefe23x5yk"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_cgxkv"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_wyepm"]
 [ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_vdub2"]
 [ext_resource type="AudioStream" uid="uid://cudhgvijbaycj" path="res://Game/Sounds/electro_loop_140.mp3" id="4_cgxkv"]
-[ext_resource type="Texture2D" uid="uid://b3ljr8djhlprk" path="res://Game/Assets/matrix.png" id="5_a4bee"]
 [ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="6_68gyj"]
+[ext_resource type="PackedScene" uid="uid://bk8r5d1l3re1l" path="res://Game/UI/intro_player.tscn" id="6_vdub2"]
+[ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="7_vdub2"]
+[ext_resource type="PackedScene" uid="uid://bwjcy6tkuu38t" path="res://Game/UI/GameOver/game_over_screen.tscn" id="8_7sb6t"]
+
+[sub_resource type="GDScript" id="GDScript_wyepm"]
+script/source = "extends Node
+
+func _process(_delta):
+	if(get_parent().beat_number == 48):
+		get_parent().update_count = 1
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("1_cgxkv")
@@ -95,14 +105,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_erpku")
 
-[sub_resource type="GDScript" id="GDScript_wyepm"]
-script/source = "extends Node
-
-func _process(_delta):
-	if(get_parent().beat_number == 48):
-		get_parent().update_count = 1
-"
-
 [sub_resource type="GDScript" id="GDScript_cgxkv"]
 script/source = "extends Node
 
@@ -131,6 +133,14 @@ func _ready():
 
 [node name="Level1-140" type="Node2D"]
 
+[node name="GameSpeed" parent="." instance=ExtResource("3_vdub2")]
+stream = ExtResource("4_cgxkv")
+autoplay = false
+update_count = 2
+
+[node name="UpdateCount" type="Node" parent="GameSpeed"]
+script = SubResource("GDScript_wyepm")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAAAAAYAAgABAAAAAAAAAAcAAgABAAIAAAAMAAYAAgABAAAAAAANAAcAAgABAAIAAAANAAYAAgABAAAAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAAOAAUAAgABAAEAAAAOAAQAAgABAAEAAAAOAAMAAgABAAEAAAAOAAIAAgABAAEAAAAOAAEAAgABAAEAAAAOAAAAAgABAAEAAAAOAP//AgABAAEAAAAOAP7/AgABAAAAAAD//wcAAgABAAIAAAD+/wcAAgABAAIAAAD+/wYAAgABAAEAAAD+/wUAAgABAAEAAAD+/wQAAgABAAEAAAD+/wMAAgABAAEAAAD+/wIAAgABAAEAAAD+/wEAAgABAAEAAAD+/wAAAgABAAAAAAD+//7/AgABAAAAAAD+////AgAAAAIAAAD/////AgACAAIAAAD///7/AgACAAAAAAD//wAAAgACAAEAAAD//wEAAgACAAEAAAD//wIAAgACAAEAAAD//wMAAgACAAEAAAD//wQAAgACAAEAAAD//wUAAgABAAEAAAD//wYAAgABAAEAAAAPAAcAAgACAAIAAAAPAAYAAgACAAEAAAAPAAUAAgACAAEAAAAPAAQAAgACAAEAAAAPAAMAAgACAAEAAAAPAAIAAgACAAEAAAAPAAEAAgACAAEAAAAPAAAAAgACAAEAAAAPAP//AgACAAEAAAAPAP7/AgACAAAAAAA=")
@@ -139,21 +149,8 @@ tile_set = SubResource("TileSet_m417t")
 [node name="Player" parent="." instance=ExtResource("2_wyepm")]
 position = Vector2(208, 176)
 
-[node name="GameSpeed" parent="." instance=ExtResource("3_vdub2")]
-stream = ExtResource("4_cgxkv")
-update_count = 2
-
-[node name="UpdateCount" type="Node" parent="GameSpeed"]
-script = SubResource("GDScript_wyepm")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
-
-[node name="Matrix" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(224, 128)
-texture = ExtResource("5_a4bee")
 
 [node name="Beats" type="Node2D" parent="."]
 
@@ -162,3 +159,13 @@ position = Vector2(-80, 184)
 
 [node name="Sequence" type="Node" parent="Beats/Spawner"]
 script = SubResource("GDScript_cgxkv")
+
+[node name="IntroPlayer" parent="." instance=ExtResource("6_vdub2")]
+
+[node name="GameInterface" parent="." instance=ExtResource("7_vdub2")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_7sb6t")]
+visible = false
+next_scene = "res://Game/Scenes/Levels/level_2.tscn"
+
+[connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]

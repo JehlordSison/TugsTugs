@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://b4lhfmiqfa6d6"]
+[gd_scene load_steps=12 format=4 uid="uid://b4lhfmiqfa6d6"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_1pmvm"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_uceeo"]
 [ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_vjfeq"]
 [ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="5_1pmvm"]
 [ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="5_x242j"]
+[ext_resource type="PackedScene" uid="uid://bwjcy6tkuu38t" path="res://Game/UI/GameOver/game_over_screen.tscn" id="6_uceeo"]
+[ext_resource type="PackedScene" uid="uid://bk8r5d1l3re1l" path="res://Game/UI/intro_player.tscn" id="7_vjfeq"]
 
 [sub_resource type="GDScript" id="GDScript_1pmvm"]
 script/source = "extends Node
@@ -135,6 +137,7 @@ func _ready():
 [node name="Level4-140" type="Node2D"]
 
 [node name="GameSpeed" parent="." instance=ExtResource("3_vjfeq")]
+autoplay = false
 update_count = 2
 
 [node name="UpdateCount" type="Node" parent="GameSpeed"]
@@ -160,3 +163,11 @@ position = Vector2(-80, 184)
 script = SubResource("GDScript_uceeo")
 
 [node name="GameInterface" parent="." instance=ExtResource("5_1pmvm")]
+
+[node name="GameOver" parent="." instance=ExtResource("6_uceeo")]
+visible = false
+next_scene = "res://Game/UI/Menu/menu.tscn"
+
+[node name="IntroPlayer" parent="." instance=ExtResource("7_vjfeq")]
+
+[connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]
