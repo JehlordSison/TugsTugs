@@ -14,6 +14,7 @@ func _on_retry_button_pressed():
 
 func _on_menu_button_pressed():
 	GameHandler.GameMenu
+	get_tree().change_scene_to_file("res://Game/UI/Menu/menu.tscn")
 
 func _on_next_button_pressed():
 	get_tree().change_scene_to_file(next_scene)

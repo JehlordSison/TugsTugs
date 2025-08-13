@@ -232,6 +232,7 @@ script = ExtResource("4_ulv0d")
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -42.0
 offset_right = 19.0
