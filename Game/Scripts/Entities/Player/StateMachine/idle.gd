@@ -9,8 +9,10 @@ func EnterState():
 func _on_controls_has_input(dir):
 	match dir:
 		"Right":
+			animation.flip_h = false
 			Set_State("Hop")
 		"Left":
+			animation.flip_h = true
 			Set_State("Hop")
 		"Up":
 			Set_State("Jump")
