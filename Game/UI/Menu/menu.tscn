@@ -1,22 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcmuugqifbii"]
+[gd_scene load_steps=10 format=3 uid="uid://dcmuugqifbii"]
 
 [ext_resource type="Script" uid="uid://wqf0jkbqsrme" path="res://Game/Scripts/UI/Menu/menu.gd" id="1_ub16u"]
 [ext_resource type="Texture2D" uid="uid://be8edqyof4a0y" path="res://Game/Assets/UI/title.png" id="2_jy85n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyx7x"]
-atlas = ExtResource("2_jy85n")
-region = Rect2(0, 0, 343, 219)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3su4r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gyx7x")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://c43e1yrj5k1sg" path="res://Game/Assets/UI/bg-overall.png" id="2_mbnw5"]
+[ext_resource type="Texture2D" uid="uid://b46lqcid34m22" path="res://Game/Assets/UI/Menu/play_normal.png" id="3_3su4r"]
+[ext_resource type="Texture2D" uid="uid://b76wiu4yftsub" path="res://Game/Assets/UI/Menu/play_pressed.png" id="4_4kr80"]
+[ext_resource type="Texture2D" uid="uid://c8xu8ypk7wg36" path="res://Game/Assets/UI/Menu/story_normal.png" id="5_mbnw5"]
+[ext_resource type="Texture2D" uid="uid://bc4cr2b4xh5ol" path="res://Game/Assets/UI/Menu/story_pressed.png" id="6_o7h58"]
+[ext_resource type="Texture2D" uid="uid://dkto3bdt3okpv" path="res://Game/Assets/UI/Menu/credits_normal.png" id="7_j20bg"]
+[ext_resource type="Texture2D" uid="uid://cy1d2qlil1mi8" path="res://Game/Assets/UI/Menu/credits_pressed.png" id="8_pdx3h"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -27,63 +19,72 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ub16u")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(2.40654e-08, 0.196006, 0.379791, 1)
-
-[node name="PlayButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 76.5
-offset_top = -64.0
-offset_right = 176.5
-offset_bottom = -29.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play"
-
-[node name="StoryButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 76.5
-offset_top = -17.5
-offset_right = 176.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Story"
-
-[node name="CreditsButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 76.5
-offset_top = 28.0
-offset_right = 176.5
-offset_bottom = 63.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1
-position = Vector2(152, 124)
-sprite_frames = SubResource("SpriteFrames_3su4r")
+layout_mode = 0
+offset_right = 455.0
+offset_bottom = 256.0
+texture = ExtResource("2_mbnw5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 455.0
+offset_bottom = 256.0
+texture = ExtResource("2_jy85n")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.5
+offset_top = -80.0
+offset_right = 214.5
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_3su4r")
+texture_pressed = ExtResource("4_4kr80")
+stretch_mode = 0
+
+[node name="StoryButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.5
+offset_top = -28.0
+offset_right = 212.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_mbnw5")
+texture_pressed = ExtResource("6_o7h58")
+stretch_mode = 0
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.5
+offset_top = 24.0
+offset_right = 212.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_j20bg")
+texture_pressed = ExtResource("8_pdx3h")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

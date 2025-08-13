@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwjcy6tkuu38t"]
+[gd_scene load_steps=3 format=3 uid="uid://bwjcy6tkuu38t"]
 
 [ext_resource type="Script" uid="uid://clerf2peb8nh7" path="res://Game/Scripts/UI/GameOver/game_over.gd" id="1_o8gji"]
+[ext_resource type="Texture2D" uid="uid://c43e1yrj5k1sg" path="res://Game/Assets/UI/bg-overall.png" id="2_64ok5"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_o8gji")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 455.0
+offset_bottom = 256.0
+texture = ExtResource("2_64ok5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -11,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(2.40654e-08, 0.196006, 0.379791, 1)
+color = Color(0, 0, 0, 0.415686)
 
 [node name="Score" type="Label" parent="."]
 offset_left = 140.0

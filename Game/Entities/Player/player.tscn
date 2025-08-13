@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dntuv8soi5afl"]
+[gd_scene load_steps=15 format=3 uid="uid://dntuv8soi5afl"]
 
 [ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/Entities/Player/sprite.png" id="1_cyq5s"]
@@ -16,6 +16,39 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
 radius = 14.0357
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_yj5xo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"dance",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fall",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"hop",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"jump",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_1du5w")
@@ -27,6 +60,10 @@ shape = SubResource("CircleShape2D_ulv0d")
 texture_filter = 1
 position = Vector2(0, -2)
 texture = ExtResource("1_cyq5s")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yj5xo")
+animation = &"dance"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_70t3k")

@@ -1,8 +1,10 @@
 extends States
 class_name Player_Hop
 
+@onready var animation = $"../../Animation"
+
 func EnterState():
-	pass
+	animation.play("hop")
 
 func UpdatePhysicsState(_delta: float):
 	if(actor.velocity.y > 0):

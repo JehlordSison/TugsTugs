@@ -1,8 +1,10 @@
 extends States
 class_name Player_Dance
 
+@onready var animation = $"../../Animation"
+
 func EnterState():
-	pass
+	animation.play("dance")
 
 func InputState(_input: InputEvent):
 	if(Input.is_action_just_released("move_down")):

@@ -1,8 +1,10 @@
 extends States
 class_name Player_Idle
 
+@onready var animation = $"../../Animation"
+
 func EnterState():
-	pass
+	animation.play("idle")
 
 func _on_controls_has_input(dir):
 	match dir:
