@@ -35,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 60.0
-offset_right = 50.0
-offset_bottom = 95.0
+offset_left = 120.5
+offset_top = 84.0
+offset_right = 220.5
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
@@ -66,10 +66,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.0
+offset_left = -171.5
 offset_top = -100.0
-offset_right = 172.0
-offset_bottom = 101.0
+offset_right = 172.5
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 7
@@ -85,5 +85,14 @@ Link: https://opengameart.org/content/the-looming
 @FoxSynergy - Recall of the Shadows - CC BY 3.0
 Link: https://opengameart.org/content/recall-of-the-shadows
 "
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 240.0
+offset_right = 187.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 10
+text = "Developed by Mqster - Jehlord Kurt H. Sison"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.415686)
+color = Color(0, 0, 0, 0.572549)
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
@@ -35,12 +35,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 60.0
-offset_right = 50.0
-offset_bottom = 95.0
+offset_left = 116.5
+offset_top = 84.0
+offset_right = 216.5
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -60.0
+offset_right = 150.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "Bana was accidentally hit by a \"conscious particle,\" giving him self-awareness. Seeing himself and the other bananas in the market, all being sold to be eaten by humans, he realized that a banana's ultimate goal in life was to be consumed. But Bana refused to accept this fate; he wanted to live and be a happy Banana. He met the Matrix and promised him to change his fate if he can finished the challenges."
+autowrap_mode = 2
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

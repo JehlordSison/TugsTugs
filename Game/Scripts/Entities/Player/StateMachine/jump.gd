@@ -5,6 +5,7 @@ class_name Player_Jump
 
 func EnterState():
 	animation.play("jump")
+	print("ter")
 
 func UpdatePhysicsState(_delta: float):
 	if(actor.velocity.y > 0):

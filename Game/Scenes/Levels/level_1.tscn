@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://b5jfefe23x5yk"]
+[gd_scene load_steps=17 format=4 uid="uid://b5jfefe23x5yk"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_cgxkv"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_wyepm"]
+[ext_resource type="Texture2D" uid="uid://b6tgqoqfgs712" path="res://Game/Assets/Aesthetics/BG.png" id="3_a4bee"]
 [ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_vdub2"]
+[ext_resource type="Texture2D" uid="uid://babuwg1mr2ips" path="res://Game/Assets/Aesthetics/Notes/notes4.png" id="4_68gyj"]
 [ext_resource type="AudioStream" uid="uid://cudhgvijbaycj" path="res://Game/Sounds/electro_loop_140.mp3" id="4_cgxkv"]
 [ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="6_68gyj"]
 [ext_resource type="PackedScene" uid="uid://bk8r5d1l3re1l" path="res://Game/UI/intro_player.tscn" id="6_vdub2"]
@@ -17,6 +19,9 @@ func _process(_delta):
 	if(get_parent().beat_number == 48):
 		get_parent().update_count = 1
 "
+
+[sub_resource type="Gradient" id="Gradient_e64qi"]
+colors = PackedColorArray(0, 0.480488, 0.197361, 1, 0, 0.239216, 0.568627, 0.537255)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("1_cgxkv")
@@ -141,6 +146,48 @@ update_count = 2
 
 [node name="UpdateCount" type="Node" parent="GameSpeed"]
 script = SubResource("GDScript_wyepm")
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_a4bee")
+centered = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(-12, 72)
+texture = ExtResource("4_68gyj")
+explosiveness = 0.02
+direction = Vector2(0, 0)
+spread = 93.49
+gravity = Vector2(0, 100)
+initial_velocity_min = 85.27
+initial_velocity_max = 705.43
+angular_velocity_min = -334.88
+angular_velocity_max = 44.65
+scale_amount_min = 0.0
+scale_amount_max = 4.01
+color_ramp = SubResource("Gradient_e64qi")
+hue_variation_min = 0.5
+hue_variation_max = 0.5
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(468, 72)
+rotation = -2.91023
+texture = ExtResource("4_68gyj")
+explosiveness = 0.02
+direction = Vector2(0, 0)
+spread = 93.49
+gravity = Vector2(0, 100)
+initial_velocity_min = 85.27
+initial_velocity_max = 705.43
+angular_velocity_min = -334.88
+angular_velocity_max = 44.65
+scale_amount_min = 0.0
+scale_amount_max = 4.01
+color_ramp = SubResource("Gradient_e64qi")
+hue_variation_min = 0.5
+hue_variation_max = 0.5
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1

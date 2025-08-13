@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TugsTugs"
-run/main_scene="uid://b4lhfmiqfa6d6"
+run/main_scene="uid://dcmuugqifbii"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -36,6 +36,10 @@ player=""
 beat_duration=""
 quality_press=""
 tile_forms=""
+
+[gui]
+
+theme/custom_font="uid://co1uu7ob15xeu"
 
 [input]
 

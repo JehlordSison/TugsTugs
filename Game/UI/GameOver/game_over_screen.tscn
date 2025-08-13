@@ -21,6 +21,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.415686)
 
 [node name="Score" type="Label" parent="."]
+visible = false
 offset_left = 140.0
 offset_top = 68.0
 offset_right = 229.0
@@ -28,6 +29,7 @@ offset_bottom = 91.0
 text = "Final Score:"
 
 [node name="TileScore" type="Label" parent="."]
+visible = false
 offset_left = 140.0
 offset_top = 88.0
 offset_right = 207.0
@@ -35,6 +37,7 @@ offset_bottom = 111.0
 text = "Tiles Hit:"
 
 [node name="Combo" type="Label" parent="."]
+visible = false
 offset_left = 140.0
 offset_top = 108.0
 offset_right = 202.0
@@ -42,6 +45,7 @@ offset_bottom = 131.0
 text = "Combo:"
 
 [node name="Rating" type="Label" parent="."]
+visible = false
 offset_left = 140.0
 offset_top = 128.0
 offset_right = 202.0
@@ -55,9 +59,9 @@ anchor_top = 0.186
 anchor_right = 0.5
 anchor_bottom = 0.186
 offset_left = -46.0
-offset_top = -23.616
+offset_top = 64.384
 offset_right = 46.0
-offset_bottom = -0.616001
+offset_bottom = 87.384
 grow_horizontal = 2
 grow_vertical = 2
 text = "GAME OVER"

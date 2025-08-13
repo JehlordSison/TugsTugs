@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dntuv8soi5afl"]
+[gd_scene load_steps=35 format=3 uid="uid://dntuv8soi5afl"]
 
 [ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/Entities/Player/sprite.png" id="1_cyq5s"]
@@ -63,6 +63,18 @@ region = Rect2(256, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_baosx"]
 atlas = ExtResource("3_317ww")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_317ww"]
+atlas = ExtResource("3_317ww")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r818a"]
+atlas = ExtResource("3_317ww")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ywiy"]
+atlas = ExtResource("3_317ww")
+region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgs38"]
 atlas = ExtResource("3_317ww")
@@ -132,7 +144,16 @@ animations = [{
 "name": &"idle",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_317ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r818a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ywiy")
+}],
 "loop": false,
 "name": &"jump",
 "speed": 12.0
@@ -165,8 +186,7 @@ texture = ExtResource("1_cyq5s")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yj5xo")
-animation = &"idle"
-frame_progress = 0.677204
+animation = &"jump"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_70t3k")
