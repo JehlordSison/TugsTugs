@@ -60,6 +60,7 @@ func delete_arrow_queue(index: int) -> void:
 	
 func get_game_speed() -> void:
 	var game_speed = get_tree().get_first_node_in_group("game_speed")
+	
 	game_speed.connect("track_finished", _on_game_over)
 
 func _on_game_over() -> void:
@@ -75,4 +76,3 @@ func get_player() -> void:
 
 func hide_elements() -> void:
 	$BeatDuration.hide()
-	$Beat.hide()

@@ -87,4 +87,5 @@ texture_normal = ExtResource("7_j20bg")
 texture_pressed = ExtResource("8_pdx3h")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StoryButton" to="." method="_on_story_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

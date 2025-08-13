@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcp2nxg3eevni"]
+
+[ext_resource type="Script" uid="uid://c7bmprr2tpita" path="res://Game/Scripts/UI/Story/story.gd" id="1_tb6ur"]
+[ext_resource type="Texture2D" uid="uid://c43e1yrj5k1sg" path="res://Game/Assets/UI/bg-overall.png" id="2_mfelm"]
+
+[node name="Story" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tb6ur")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 455.0
+offset_bottom = 256.0
+texture = ExtResource("2_mfelm")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 60.0
+offset_right = 50.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

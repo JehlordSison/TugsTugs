@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dntuv8soi5afl"]
+[gd_scene load_steps=18 format=3 uid="uid://dntuv8soi5afl"]
 
 [ext_resource type="Script" uid="uid://cgixqck4uokiw" path="res://Game/Scripts/Entities/Player/player.gd" id="1_1du5w"]
 [ext_resource type="Texture2D" uid="uid://by2fuxccnlblx" path="res://Game/Assets/Entities/Player/sprite.png" id="1_cyq5s"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://buqemee7vlba0" path="res://Game/Scripts/Entities/Player/StateMachine/jump.gd" id="8_yj5xo"]
 [ext_resource type="Script" uid="uid://glbx01i22rht" path="res://Game/Scripts/Entities/Player/StateMachine/death.gd" id="9_yj5xo"]
 [ext_resource type="Script" uid="uid://cbh632h5ustm0" path="res://Game/Scripts/Entities/Player/quality_press.gd" id="13_ev5uv"]
+[ext_resource type="AudioStream" uid="uid://bnf0qx0bl7kcv" path="res://Game/Sounds/SFX/perfect.wav" id="13_gfb6b"]
+[ext_resource type="AudioStream" uid="uid://xyihy3du2k6g" path="res://Game/Sounds/Drums/metronome.mp3" id="14_317ww"]
+[ext_resource type="AudioStream" uid="uid://bdeaf7e3misna" path="res://Game/Sounds/SFX/missed.wav" id="14_qp60b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulv0d"]
 radius = 14.0357
@@ -116,6 +119,22 @@ offset_bottom = -19.0
 
 [node name="QualityPress" type="Node" parent="." groups=["quality_press"]]
 script = ExtResource("13_ev5uv")
+
+[node name="PerfectSFX" type="AudioStreamPlayer" parent="QualityPress"]
+stream = ExtResource("13_gfb6b")
+volume_db = -15.0
+
+[node name="PerfectSFX2" type="AudioStreamPlayer" parent="QualityPress"]
+stream = ExtResource("13_gfb6b")
+volume_db = -15.0
+pitch_scale = 2.0
+
+[node name="MissedSFX" type="AudioStreamPlayer" parent="QualityPress"]
+stream = ExtResource("14_317ww")
+
+[node name="LateSFX" type="AudioStreamPlayer" parent="QualityPress"]
+stream = ExtResource("14_qp60b")
+volume_db = -25.0
 
 [connection signal="has_input" from="Controls" to="StateMachine/Idle" method="_on_controls_has_input"]
 [connection signal="has_input" from="Controls" to="StateMachine/Dance" method="_on_controls_has_input"]

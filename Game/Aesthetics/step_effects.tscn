@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdnvgik33xlre"]
+[gd_scene load_steps=7 format=3 uid="uid://bdnvgik33xlre"]
 
 [ext_resource type="Script" uid="uid://ldji5r8heldt" path="res://Game/Scripts/Aesthetics/step_effects.gd" id="1_6fbb5"]
 [ext_resource type="Texture2D" uid="uid://dk68ix54liiak" path="res://Game/Assets/Aesthetics/Notes/notes1.png" id="1_icp15"]
 [ext_resource type="Texture2D" uid="uid://djumqdejxmse5" path="res://Game/Assets/Aesthetics/Notes/notes3.png" id="2_6fbb5"]
 [ext_resource type="Texture2D" uid="uid://babuwg1mr2ips" path="res://Game/Assets/Aesthetics/Notes/notes4.png" id="3_huksc"]
 [ext_resource type="Texture2D" uid="uid://bv2uhojty8ycn" path="res://Game/Assets/Aesthetics/Notes/notes5.png" id="4_3e1v2"]
-
-[sub_resource type="Gradient" id="Gradient_bes7g"]
-offsets = PackedFloat32Array(0.19797, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_0sk76"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -20,7 +16,7 @@ script = ExtResource("1_6fbb5")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 8)
+position = Vector2(-2, 8)
 emitting = false
 amount = 2
 texture = ExtResource("1_icp15")
@@ -34,20 +30,20 @@ emission_rect_extents = Vector2(1, 1)
 direction = Vector2(0, -1)
 spread = 35.86
 gravity = Vector2(0, -1)
-initial_velocity_min = 51.72
-initial_velocity_max = 193.96
+initial_velocity_min = 35.0
+initial_velocity_max = 100.0
 angular_velocity_min = 62.07
 angular_velocity_max = 148.97
 scale_amount_min = 0.4
 scale_amount_max = 0.8
-color_ramp = SubResource("Gradient_bes7g")
 hue_variation_min = -1.0
 hue_variation_max = 0.06
 hue_variation_curve = SubResource("Curve_0sk76")
+metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 8)
+position = Vector2(-6, 8)
 emitting = false
 amount = 2
 texture = ExtResource("2_6fbb5")
@@ -61,17 +57,18 @@ emission_rect_extents = Vector2(1, 1)
 direction = Vector2(0, -1)
 spread = 35.86
 gravity = Vector2(0, -1)
-initial_velocity_max = 193.96
+initial_velocity_min = 35.0
+initial_velocity_max = 100.0
 angular_velocity_min = 62.07
 angular_velocity_max = 148.97
-color_ramp = SubResource("Gradient_bes7g")
 hue_variation_min = -1.0
 hue_variation_max = 0.06
 hue_variation_curve = SubResource("Curve_0sk76")
+metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 8)
+position = Vector2(6, 8)
 emitting = false
 amount = 2
 texture = ExtResource("3_huksc")
@@ -85,20 +82,20 @@ emission_rect_extents = Vector2(1, 1)
 direction = Vector2(0, -1)
 spread = 35.86
 gravity = Vector2(0, -1)
-initial_velocity_min = 17.24
-initial_velocity_max = 193.96
+initial_velocity_min = 35.0
+initial_velocity_max = 100.0
 angular_velocity_min = 62.07
 angular_velocity_max = 148.97
 scale_amount_min = 0.4
 scale_amount_max = 0.9
-color_ramp = SubResource("Gradient_bes7g")
 hue_variation_min = -1.0
 hue_variation_max = 0.06
 hue_variation_curve = SubResource("Curve_0sk76")
+metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 8)
+position = Vector2(2, 8)
 emitting = false
 amount = 2
 texture = ExtResource("4_3e1v2")
@@ -112,13 +109,13 @@ emission_rect_extents = Vector2(1, 1)
 direction = Vector2(0, -1)
 spread = 35.86
 gravity = Vector2(0, -1)
-initial_velocity_min = 17.24
-initial_velocity_max = 193.96
+initial_velocity_min = 35.0
+initial_velocity_max = 100.0
 angular_velocity_min = 62.07
 angular_velocity_max = 148.97
 scale_amount_min = 0.5
 scale_amount_max = 0.9
-color_ramp = SubResource("Gradient_bes7g")
 hue_variation_min = -1.0
 hue_variation_max = 0.06
 hue_variation_curve = SubResource("Curve_0sk76")
+metadata/_edit_lock_ = true

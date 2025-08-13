@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb8a1nwr0tsk5"]
+
+[ext_resource type="Texture2D" uid="uid://b50uufwmd6e43" path="res://Game/Assets/UI/beat.png" id="1_td2l6"]
+[ext_resource type="Script" uid="uid://dtsdqytl5d88r" path="res://Game/Scripts/Aesthetics/beat.gd" id="2_llcwy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhj6d"]
+atlas = ExtResource("1_td2l6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1bb"]
+atlas = ExtResource("1_td2l6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sg6u"]
+atlas = ExtResource("1_td2l6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5t8u"]
+atlas = ExtResource("1_td2l6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4j7cq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhj6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sg6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5t8u")
+}],
+"loop": true,
+"name": &"Bounce",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_llcwy"]
+resource_name = "hide"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mcgiu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcgiu"]
+_data = {
+&"RESET": SubResource("Animation_mcgiu"),
+&"hide": SubResource("Animation_llcwy")
+}
+
+[node name="Beat" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4j7cq")
+animation = &"Bounce"
+autoplay = "Bounce"
+script = ExtResource("2_llcwy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mcgiu")
+}

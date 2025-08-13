@@ -50,7 +50,7 @@ func get_game_speed_tick() -> void:
 func on_game_speed_tick() -> void:
 	press_duration.stop()
 	press_duration.start(press_duration_interval)
-	get_parent().get_node("Beat").play("Bounce")
+	#get_parent().get_node("Beat").play("Bounce")
 	value = 0
 	
 func on_set_max_value() -> void:

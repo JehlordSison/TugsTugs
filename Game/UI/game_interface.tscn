@@ -1,9 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://b7j1a13blte40"]
+[gd_scene load_steps=33 format=3 uid="uid://b7j1a13blte40"]
 
 [ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/Scripts/UI/game_interface.gd" id="1_vsudi"]
 [ext_resource type="Texture2D" uid="uid://d0mkuuolpsten" path="res://Game/Assets/UI/arrows.png" id="2_mj7jt"]
 [ext_resource type="Texture2D" uid="uid://b50uufwmd6e43" path="res://Game/Assets/UI/beat.png" id="3_4romp"]
 [ext_resource type="PackedScene" uid="uid://bb6ku4l46ojan" path="res://Game/UI/beat_meter.tscn" id="4_avyol"]
+[ext_resource type="Texture2D" uid="uid://c1gybk76e6yy0" path="res://Game/Assets/UI/GameInterface/1.png" id="5_mmm6m"]
+[ext_resource type="Texture2D" uid="uid://cyl3wf8r0h0in" path="res://Game/Assets/UI/GameInterface/2.png" id="6_4yraw"]
+[ext_resource type="Texture2D" uid="uid://c43e1yrj5k1sg" path="res://Game/Assets/UI/bg-overall.png" id="7_4yraw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylblh"]
 atlas = ExtResource("2_mj7jt")
@@ -210,43 +213,37 @@ _data = {
 &"slide": SubResource("Animation_4romp")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhj6d"]
-atlas = ExtResource("3_4romp")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="GDScript" id="GDScript_mmm6m"]
+script/source = "extends Control
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qb1bb"]
-atlas = ExtResource("3_4romp")
-region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0sg6u"]
-atlas = ExtResource("3_4romp")
-region = Rect2(64, 0, 64, 64)
+func _on_resume_button_pressed():
+	hide()
+	GameHandler.GamePlaying()
+	get_game_speed().resume_music
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5t8u"]
-atlas = ExtResource("3_4romp")
-region = Rect2(0, 0, 64, 64)
+func _on_menu_button_pressed():
+	get_game_speed().force_end_game
+	GameHandler.GameMenu()
+	get_tree().change_scene_to_file(\"res://Game/UI/Menu/menu.tscn\")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_avyol"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhj6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qb1bb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0sg6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s5t8u")
-}],
-"loop": false,
-"name": &"Bounce",
-"speed": 12.0
-}]
+func _on_pause_button_pressed():
+	show()
+	get_game_speed().pause_music
+	GameHandler.GamePause()
+
+func get_game_speed() -> Node:
+	var game_speed = get_tree().get_first_node_in_group(\"game_speed\")
+	return game_speed 
+
+func get_game_interface() -> CanvasLayer:
+	var game_interface: CanvasLayer = get_tree().get_first_node_in_group(\"game_interface\")
+	return game_interface
+	
+"
 
 [node name="GameInterface" type="CanvasLayer" groups=["game_interface"]]
+process_mode = 3
 script = ExtResource("1_vsudi")
 
 [node name="Panel" type="Control" parent="."]
@@ -293,19 +290,15 @@ libraries = {
 
 [node name="Node" type="Node" parent="."]
 
-[node name="Beat" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(424, 224)
-sprite_frames = SubResource("SpriteFrames_avyol")
-animation = &"Bounce"
-frame = 3
-frame_progress = 1.0
-
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 8.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
 offset_top = 8.0
-offset_right = 51.0
-offset_bottom = 31.0
+offset_right = 21.5
+offset_bottom = 32.0
+grow_horizontal = 2
 text = "Score"
 
 [node name="BeatDuration" parent="." instance=ExtResource("4_avyol")]
@@ -320,3 +313,74 @@ offset_right = 32.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="PauseButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("5_mmm6m")
+texture_pressed = ExtResource("6_4yraw")
+stretch_mode = 0
+
+[node name="PausePanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_mmm6m")
+
+[node name="TextureRect2" type="TextureRect" parent="PausePanel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 455.0
+offset_bottom = 256.0
+texture = ExtResource("7_4yraw")
+
+[node name="ColorRect2" type="ColorRect" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.415686)
+
+[node name="Label" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME PAUSED"
+
+[node name="ResumeButton" type="Button" parent="PausePanel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 112.0
+offset_right = 262.0
+offset_bottom = 143.0
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="PausePanel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 152.0
+offset_right = 262.0
+offset_bottom = 183.0
+text = "Menu"
+
+[connection signal="pressed" from="PauseButton" to="PausePanel" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PausePanel/ResumeButton" to="PausePanel" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PausePanel/MenuButton" to="PausePanel" method="_on_menu_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cv5iqva4xnrca"]
+[gd_scene load_steps=14 format=4 uid="uid://cv5iqva4xnrca"]
 
 [ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_esvst"]
 [ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_a8mau"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="6_tjnp7"]
 [ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="7_jgko2"]
 [ext_resource type="PackedScene" uid="uid://bwjcy6tkuu38t" path="res://Game/UI/GameOver/game_over_screen.tscn" id="8_tk4yo"]
+[ext_resource type="Texture2D" uid="uid://dtf4yx74nxsa5" path="res://Game/Assets/UI/tutorial.png" id="9_tk4yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
 texture = ExtResource("1_esvst")
@@ -97,22 +98,30 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_erpku")
 
+[sub_resource type="GDScript" id="GDScript_tk4yo"]
+script/source = "extends Node
+
+func _process(_delta):
+	if(get_parent().beat_number == 8):
+		get_parent().update_count = 1
+"
+
 [sub_resource type="GDScript" id="GDScript_jgko2"]
 script/source = "extends Node
 
-var sequence: Array = [7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6]
+var sequence: Array = [7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6,7 ,8 ,9, 10, 11, 12, 13, 12 ,11 , 10, 9, 8, 7, 6]
 
 var tutorial_completed: bool = false
 
 func _ready(): 
 	get_parent().sequence = sequence
 
-func _process(delta):
+func _process(_delta):
 	get_game_interface()
 	
 func get_game_interface() -> void:
 	var game_interface = get_tree().get_first_node_in_group(\"game_interface\")
-	if(game_interface.tiles_hit >= 14):
+	if(game_interface.tiles_hit >= 16):
 		if(tutorial_completed == false):
 			tutorial_completed = true
 			await get_tree().create_timer(1).timeout
@@ -140,6 +149,9 @@ stream = ExtResource("4_tk4yo")
 song_is_looped = true
 update_count = 4
 
+[node name="UpdateCount" type="Node" parent="GameSpeed"]
+script = SubResource("GDScript_tk4yo")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(224, 128)
 
@@ -162,5 +174,26 @@ script = SubResource("GDScript_jgko2")
 [node name="GameOver" parent="." instance=ExtResource("8_tk4yo")]
 visible = false
 next_scene = "res://Game/Scenes/Levels/level_1.tscn"
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("9_tk4yo")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 148.0
+offset_top = 40.0
+offset_right = 291.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 10
+text = "Jump on tiles by pressing keys"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 232.0
+offset_right = 353.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 10
+text = "Time your press on the beat using your beat meter"
 
 [connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]

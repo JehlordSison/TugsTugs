@@ -48,12 +48,18 @@ func press_quality(input_dir: String) -> String:
 		if(get_game_speed().playing):
 			if(get_progress_percetage >= 75):
 				result = "Perfect"
+				$PerfectSFX2.play()
 			elif(get_progress_percetage < 75) and (get_progress_percetage > 50):
 				result = "Good"
+				$PerfectSFX.play()
+				
 			else:
+				$MissedSFX.play()
 				result = "Miss"
 				
-	else: result = "Late"
+	else:
+		$LateSFX.play()
+		result = "Late"
 	quality.emit(result)
 	return result
 	
