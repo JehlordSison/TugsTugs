@@ -15,8 +15,10 @@ func _ready():
 
 func _on_body_entered(_body):
 	hop_count -= 1
+	add_score()
+	
 	marker.play("In")
-	#add_more_time_to_beat_meter()
+	
 	if(hop_count <= 0):
 		collision_shape_2d.set_deferred("disabled", true)
 		
@@ -27,20 +29,24 @@ func _on_body_entered(_body):
 			gameover.emit()
 		
 		await marker.animation_finished
-
 		queue_free()
-		
-#func add_more_time_to_beat_meter() -> void:
-	#var beat_meter: TextureProgressBar = get_tree().get_first_node_in_group("beat_meter")
-	#beat_meter.add_time()
 
-#func 
+	add_step_effect()
 	
-#func spawn_new_tile() -> void:
-	#var new_tile = ObjectReferences.TILE_FORM.instantiate()
-	#get_parent().call_deferred("add_child", new_tile)
-	#var random_x: Array = [-32,32]
-	#var select_x: int = random_x[randi() % random_x.size()]
-	#new_tile.global_position = Vector2(global_position.x + select_x, global_position.y)
-	#print(select_x)
+func add_score() -> void:
+	var game_interface = get_tree().get_first_node_in_group("game_interface")
+	game_interface.score += 10
+	game_interface.tiles_hit += 1
+
+func _on_timer_timeout():
+	marker.play("Out")
+	await marker.animation_finished
+	queue_free()
+
+func add_step_effect() -> void:
+	var step_fx = ObjectReferences.STEP_EFFECTS.instantiate()
+	get_parent().call_deferred("add_child", step_fx)
+	step_fx.global_position = position
+
+
 	

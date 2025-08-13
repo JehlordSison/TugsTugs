@@ -31,21 +31,16 @@ func get_game_speed_tick() -> void:
 func on_game_speed_tick() -> void:
 	press_duration.stop()
 	press_duration.start(press_duration_interval)
-	
-	#	Fade
-	#$Label.self_modulate = Color("ffffff")
-	#var tween: Tween = get_tree().create_tween()
-	#tween.tween_property($Label, "self_modulate", Color("ffffff00"),press_duration_interval)
-	#tween.stop()
-	#tween.play()
-	#
-	#$Metronome.play()
+	get_parent().get_node("Beat").play("Bounce")
 
 func get_quality_press() -> void:
 	var quality_press: Node = get_tree().get_first_node_in_group("quality_press")
 	quality_press.connect("quality",_on_quality_press_emit)
 	
 func _on_quality_press_emit(type) -> void:
-	$AnimationPlayer.play("pop")
-	$AnimatedSprite2D.play(str(type).to_lower())
-	
+	var game_speed: Node = get_tree().get_first_node_in_group("game_speed")
+	if(game_speed.track_end == false):
+		$AnimationPlayer.stop()
+		$AnimationPlayer.play("pop")
+		$AnimatedSprite2D.play(str(type).to_lower())
+		

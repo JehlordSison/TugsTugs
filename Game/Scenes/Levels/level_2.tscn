@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=4 uid="uid://dclek4puxus8l"]
+
+[ext_resource type="Texture2D" uid="uid://cejv4244eeipj" path="res://Game/Assets/tile.png" id="1_gv0vm"]
+[ext_resource type="PackedScene" uid="uid://dntuv8soi5afl" path="res://Game/Entities/Player/player.tscn" id="2_r26xp"]
+[ext_resource type="PackedScene" uid="uid://bnb3ds8ordxk4" path="res://Game/Entities/Mechanics/game_speed.tscn" id="3_rporv"]
+[ext_resource type="AudioStream" uid="uid://c6ajn4sb0slu6" path="res://Game/Sounds/the_looming_120.mp3" id="4_r26xp"]
+[ext_resource type="PackedScene" uid="uid://b5i4cg6kwmjfa" path="res://Game/Entities/Mechanics/spawner.tscn" id="5_et8r7"]
+[ext_resource type="PackedScene" uid="uid://b7j1a13blte40" path="res://Game/UI/game_interface.tscn" id="7_viw7k"]
+[ext_resource type="PackedScene" uid="uid://bwjcy6tkuu38t" path="res://Game/UI/GameOver/game_over_screen.tscn" id="8_et8r7"]
+[ext_resource type="PackedScene" uid="uid://bk8r5d1l3re1l" path="res://Game/UI/intro_player.tscn" id="8_viw7k"]
+
+[sub_resource type="GDScript" id="GDScript_rporv"]
+script/source = "extends Node
+
+func _process(_delta):
+	if(get_parent().beat_number == 32):
+		get_parent().update_count = 1
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erpku"]
+texture = ExtResource("1_gv0vm")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16, -16, -16)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_m417t"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/2 = SubResource("TileSetAtlasSource_erpku")
+
+[sub_resource type="GDScript" id="GDScript_r26xp"]
+script/source = "extends Node
+
+var sequence: Array = [7, 8, 9, 8, 7, 6, 5, 4, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 7, -1, 1, 2, 3, 2, 1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, -1, 13, 12, 11, 10, 9, 8, 7, 6, -1, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 11, 10]
+
+func _ready():
+	get_parent().sequence = sequence
+	
+"
+
+[node name="Level2-120" type="Node2D"]
+
+[node name="GameSpeed" parent="." instance=ExtResource("3_rporv")]
+stream = ExtResource("4_r26xp")
+autoplay = false
+song_bpm = 120.0
+update_count = 2
+
+[node name="UpdateCount" type="Node" parent="GameSpeed"]
+script = SubResource("GDScript_rporv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAcAAgABAAIAAAALAAcAAgABAAIAAAAKAAcAAgABAAIAAAAJAAcAAgABAAIAAAAIAAcAAgABAAIAAAAHAAcAAgABAAIAAAAGAAcAAgABAAIAAAAFAAcAAgABAAIAAAAEAAcAAgABAAIAAAADAAcAAgABAAIAAAACAAcAAgABAAIAAAABAAcAAgABAAIAAAAAAAYAAgABAAAAAAAAAAcAAgABAAIAAAAMAAYAAgABAAAAAAANAAcAAgABAAIAAAANAAYAAgABAAAAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAAOAAUAAgABAAEAAAAOAAQAAgABAAEAAAAOAAMAAgABAAEAAAAOAAIAAgABAAEAAAAOAAEAAgABAAEAAAAOAAAAAgABAAEAAAAOAP//AgABAAEAAAAOAP7/AgABAAAAAAD//wcAAgABAAIAAAD+/wcAAgABAAIAAAD+/wYAAgABAAEAAAD+/wUAAgABAAEAAAD+/wQAAgABAAEAAAD+/wMAAgABAAEAAAD+/wIAAgABAAEAAAD+/wEAAgABAAEAAAD+/wAAAgABAAAAAAD+//7/AgABAAAAAAD+////AgAAAAIAAAD/////AgACAAIAAAD///7/AgACAAAAAAD//wAAAgACAAEAAAD//wEAAgACAAEAAAD//wIAAgACAAEAAAD//wMAAgACAAEAAAD//wQAAgACAAEAAAD//wUAAgABAAEAAAD//wYAAgABAAEAAAAPAAcAAgACAAIAAAAPAAYAAgACAAEAAAAPAAUAAgACAAEAAAAPAAQAAgACAAEAAAAPAAMAAgACAAEAAAAPAAIAAgACAAEAAAAPAAEAAgACAAEAAAAPAAAAAgACAAEAAAAPAP//AgACAAEAAAAPAP7/AgACAAAAAAA=")
+tile_set = SubResource("TileSet_m417t")
+
+[node name="Player" parent="." instance=ExtResource("2_r26xp")]
+position = Vector2(208, 176)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(224, 128)
+
+[node name="Beats" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Beats" instance=ExtResource("5_et8r7")]
+position = Vector2(-80, 184)
+
+[node name="Sequence" type="Node" parent="Beats/Spawner"]
+script = SubResource("GDScript_r26xp")
+
+[node name="GameInterface" parent="." instance=ExtResource("7_viw7k")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_et8r7")]
+visible = false
+next_scene = "res://Game/Scenes/Levels/level_3.tscn"
+
+[node name="IntroPlayer" parent="." instance=ExtResource("8_viw7k")]
+
+[connection signal="track_finished" from="GameSpeed" to="GameOver" method="_on_game_speed_track_finished"]

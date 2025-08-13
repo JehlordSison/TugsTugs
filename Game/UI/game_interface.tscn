@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7j1a13blte40"]
+[gd_scene load_steps=34 format=3 uid="uid://b7j1a13blte40"]
 
 [ext_resource type="Script" uid="uid://dsuij2hxysaim" path="res://Game/Scripts/UI/game_interface.gd" id="1_vsudi"]
 [ext_resource type="Texture2D" uid="uid://d0mkuuolpsten" path="res://Game/Assets/UI/arrows.png" id="2_mj7jt"]
@@ -210,6 +210,42 @@ _data = {
 &"slide": SubResource("Animation_4romp")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhj6d"]
+atlas = ExtResource("3_4romp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1bb"]
+atlas = ExtResource("3_4romp")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sg6u"]
+atlas = ExtResource("3_4romp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5t8u"]
+atlas = ExtResource("3_4romp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avyol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhj6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sg6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5t8u")
+}],
+"loop": false,
+"name": &"Bounce",
+"speed": 12.0
+}]
+
 [node name="GameInterface" type="CanvasLayer" groups=["game_interface"]]
 script = ExtResource("1_vsudi")
 
@@ -256,6 +292,21 @@ libraries = {
 }
 
 [node name="Node" type="Node" parent="."]
+
+[node name="Beat" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(424, 31)
+sprite_frames = SubResource("SpriteFrames_avyol")
+animation = &"Bounce"
+frame = 3
+frame_progress = 1.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 31.0
+text = "Score"
 
 [node name="BeatDuration" parent="." instance=ExtResource("4_avyol")]
 anchors_preset = 7

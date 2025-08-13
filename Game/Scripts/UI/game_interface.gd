@@ -4,6 +4,18 @@ extends CanvasLayer
 @onready var h_box_container = $Panel/HBoxContainer
 @onready var animation_player = $Panel/AnimationPlayer
 
+@onready var score_label = $ScoreLabel
+
+var score: int = 0: set = _on_update_score
+var tiles_hit: int = 0
+
+func _on_update_score(val):
+	score = val
+	score_label.text = str("Score: ",val)
+	
+func _ready():
+	get_game_speed()
+	
 func play_direction_key(dir: String) -> void:
 	match dir: 
 		"Right":
@@ -46,7 +58,21 @@ func delete_arrow_queue(index: int) -> void:
 	if(h_box_container.get_children().size() > 0):
 		h_box_container.get_child(index).queue_free()
 	
+func get_game_speed() -> void:
+	var game_speed = get_tree().get_first_node_in_group("game_speed")
+	game_speed.connect("track_finished", _on_game_over)
+
+func _on_game_over() -> void:
+	hide_elements()
+	get_player()
+	#var game_over_screen = ObjectReferences.GAME_OVER_SCREEN.instantiate()
+	#get_tree().root.add_child(game_over_screen)
 	
-	
-	
-	
+func get_player() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	player.get_node("CharacterPhysics").can_move = false
+	player.get_node("CharacterPhysics").can_jump = false
+
+func hide_elements() -> void:
+	$BeatDuration.hide()
+	$Beat.hide()
