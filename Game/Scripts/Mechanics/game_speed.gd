@@ -5,11 +5,15 @@ var beat_per_seconds: float = 60.0 / song_bpm
 var song_position: float = 0.0
 var previous_song_position: float = 0.0
 var beat_number: int = 0
+
 @export var song_is_looped: bool = false
+
 signal tick
 var count_before_emit: int = 2
 var reset_count_before_emit: int = count_before_emit
 @export var update_count: int = count_before_emit: set = on_count_update
+signal count_before_emit_changed(val: int)
+
 var track_end: bool = false
 var music_has_started: bool = false  # NEW: Track if music was ever started
 signal track_finished
@@ -17,6 +21,7 @@ signal track_finished
 func on_count_update(val):
 	count_before_emit = val
 	reset_count_before_emit = count_before_emit
+	count_before_emit_changed.emit(val)
 
 func _ready():
 	beat_per_seconds = 60.0 / song_bpm
@@ -31,7 +36,7 @@ func _process(delta: float):
 		if not music_has_started:
 			music_has_started = true
 			print("Music started!")
-		
+			
 		song_position = music.get_playback_position() + AudioServer.get_time_since_last_mix()
 		
 		# Check for song end WHILE playing (before it stops)
